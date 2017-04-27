@@ -1,0 +1,23 @@
+﻿@model PointItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Name)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Address.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Organization.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.Point.Details, Mvc.Controller.Point.Name, new { id = item.Id })">
+			<td>@item.Name</td>
+			<td>@item.FormattedAddress</td>
+			<td>@item.OrganizationName</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

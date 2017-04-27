@@ -1,0 +1,17 @@
+﻿@model TextBoxViewModel
+
+<div class="form-group">
+	<label class="control-label">
+		@Model.LabelMessage
+		@if (Model.IsRequired && Model.ShowValidationMessage)
+		{
+			<span class="required">*</span>
+		}
+	</label>
+	@Model.Input
+	<div class="clear-input"></div>
+	@if (Model.ShowValidationMessage)
+	{
+		<div class="validation-section">@Model.ValidationMessage</div>
+	}
+</div>

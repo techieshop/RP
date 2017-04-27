@@ -1,0 +1,27 @@
+﻿@model BaseAlertViewModel
+
+@{
+	string message = Model.MessageCode != null ? StyleContext.GetTranslation(Model.MessageCode) : Model.Message;
+	string divclass= "alert";
+	switch (Model.AlertType) {
+		case AlertType.Success:
+			divclass = "alert alert-success";
+			break;
+		case AlertType.Info:
+			divclass = "alert alert-info";
+			break;
+		case AlertType.Warning:
+			divclass = "alert alert-warning";
+			break;
+		case AlertType.Danger:
+			divclass = "alert alert-danger";
+			break;
+	}
+}
+<div class="@divclass" role="alert">
+	@if (Model.CanClose)
+	{
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	}
+	@message
+</div>

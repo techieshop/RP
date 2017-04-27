@@ -1,0 +1,28 @@
+﻿@model RadioButtonItemsViewModel
+
+<div class="form-group">
+	<label class="control-label">@Model.LabelMessage</label>
+	<div class="coll-wrap">
+		@{ int i = 0; }
+		@foreach (var item in Model.Items)
+		{
+			string @checked = "checked";
+			string cssClass = item.Selected ? "radio-label-active" : "";
+			string forName = Model.Name + "[" + i++ + "]";
+			<div class="coll-radio">
+				<label for=@forName class="radio-label @cssClass">
+					<span></span>
+					@item.Text
+					@if(item.Selected)
+					{
+						@Html.RadioButton(Model.Name, item.Value, new { id = forName, @class = "check-radio", @checked })
+					}
+					else
+					{
+						@Html.RadioButton(Model.Name, item.Value, new { id = forName, @class = "check-radio" })
+				}
+				</label>
+			</div>
+		}
+	</div>
+</div>

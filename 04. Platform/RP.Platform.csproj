@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2E03D67-6D10-414C-891D-FF2B1995795A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RP.Platform</RootNamespace>
+    <AssemblyName>RP.Platform</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Mvc5, Version=1.2.3.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.2.3\lib\net45\Unity.Mvc5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Application_Start.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Binder\DoubleModelBinder.cs" />
+    <Compile Include="Binder\IntCollectionModelBinder.cs" />
+    <Compile Include="Binder\KeyValuePairModelBinder.cs" />
+    <Compile Include="Bundling\BundleConfig.cs" />
+    <Compile Include="Bundling\DefaultBundleResolver.cs" />
+    <Compile Include="Bundling\IBundleResolver.cs" />
+    <Compile Include="Context\Entity\EntityContext.cs" />
+    <Compile Include="Context\Entity\EntityContext.EntityOrganization.cs">
+      <DependentUpon>EntityContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Entity\EntityContext.EntityProgress.cs">
+      <DependentUpon>EntityContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Entity\EntityContext.EntityState.cs">
+      <DependentUpon>EntityContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Entity\IEntityContext.cs" />
+    <Compile Include="Context\Style\IStyleContext.cs" />
+    <Compile Include="Context\Style\StyleContext.cs" />
+    <Compile Include="Context\Style\StyleContext.Tranlation.cs">
+      <DependentUpon>StyleContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Context\User\UserContext.cs" />
+    <Compile Include="Context\User\IUserContext.cs" />
+    <Compile Include="Context\User\AuthAttribute.cs" />
+    <Compile Include="Controller\Base\BaseController.cs" />
+    <Compile Include="Controller\ErrorController.cs" />
+    <Compile Include="Controller\HomeController.cs" />
+    <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\OrganizationController.cs" />
+    <Compile Include="Controller\PigeonController.cs" />
+    <Compile Include="Controller\PointController.cs" />
+    <Compile Include="Controller\RaceController.cs" />
+    <Compile Include="Controller\RegistrationController.cs" />
+    <Compile Include="Controller\ResultController.cs" />
+    <Compile Include="Controller\SeasonController.cs" />
+    <Compile Include="Controller\SettingController.cs" />
+    <Compile Include="Controller\RoleController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="DataAnnotations\BaseDataAnnotationAttribute.cs" />
+    <Compile Include="DataAnnotations\RPDisplayAttribute.cs" />
+    <Compile Include="DataAnnotations\Validation\BaseValidationAttribute.cs" />
+    <Compile Include="DataAnnotations\Validation\RPDependentRequiredAttribute.cs" />
+    <Compile Include="DataAnnotations\Validation\RPEmailAttribute.cs" />
+    <Compile Include="DataAnnotations\Validation\RPMaxLengthAttribute.cs" />
+    <Compile Include="DataAnnotations\Validation\RPRequiredAttribute.cs" />
+    <Compile Include="DataAnnotations\Validation\RPUrlAttribute.cs" />
+    <Compile Include="DependencyInjection\DependencyResolverConfig.cs" />
+    <Compile Include="DependencyInjection\ITypeResolver.cs" />
+    <Compile Include="DependencyInjection\WebTypeResolver.cs" />
+    <Compile Include="Extension\HtmlExtension.cs" />
+    <Compile Include="Extension\HtmlExtension.DateTime.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\HtmlExtension.DropDown.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\HtmlExtension.Hidden.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\HtmlExtension.RadioButton.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\HtmlExtension.Tabs.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\HtmlExtension.TextArea.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\HtmlExtension.TextBox.cs">
+      <DependentUpon>HtmlExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filtering\DefaultFilterResolver.cs" />
+    <Compile Include="Filtering\FilterConfig.cs" />
+    <Compile Include="Filtering\IFilterResolver.cs" />
+    <Compile Include="Manager\Address\GoogleGeoCodeAddress.cs" />
+    <Compile Include="Manager\AuthManager.cs" />
+    <Compile Include="Manager\MVC.cs" />
+    <Compile Include="Manager\WebUrlManager.cs" />
+    <Compile Include="Mapping\DefaultProfile.cs" />
+    <Compile Include="Mapping\DefaultProfile.Member.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Organization.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Pigeon.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Point.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Race.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Role.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Season.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.User.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DefaultProfile.Address.cs">
+      <DependentUpon>DefaultProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\MappingConfig.cs" />
+    <Compile Include="Mapping\MappingExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\RPModelMetadataProvider.cs" />
+    <Compile Include="Routing\DefaultRouteResolver.cs" />
+    <Compile Include="Routing\IRouteResolver.cs" />
+    <Compile Include="Routing\RouteConfig.cs" />
+    <Compile Include="ViewModel\Address\AddressViewModel.cs" />
+    <Compile Include="ViewModel\Address\WebsiteViewModel.cs" />
+    <Compile Include="ViewModel\Alert\BaseAlertViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseDetailViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseEntityFilterViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseFilterViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseItemsViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseItemViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Common\DateTimeSelectListItem.cs" />
+    <Compile Include="ViewModel\Common\Enum.cs" />
+    <Compile Include="ViewModel\Entity\EntityStateChangeVM.cs" />
+    <Compile Include="ViewModel\Error\ErrorViewModel.cs" />
+    <Compile Include="ViewModel\Member\MemberDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Member\MemberAddViewModel.cs" />
+    <Compile Include="ViewModel\Member\MemberDetailViewModel.cs" />
+    <Compile Include="ViewModel\Member\MemberFilterViewModel.cs" />
+    <Compile Include="ViewModel\Member\MemberItemsViewModel.cs" />
+    <Compile Include="ViewModel\Member\MemberItemViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationAddViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationDetailViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationFilterViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationItemsViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationItemViewModel.cs" />
+    <Compile Include="ViewModel\Organization\OrganizationMemberTypeViewModel.cs" />
+    <Compile Include="ViewModel\Pigeon\PigeonAddViewModel.cs" />
+    <Compile Include="ViewModel\Pigeon\PigeonDetailViewModel.cs" />
+    <Compile Include="ViewModel\Pigeon\PigeonFilterViewModel.cs" />
+    <Compile Include="ViewModel\Pigeon\PigeonItemsViewModel.cs" />
+    <Compile Include="ViewModel\Pigeon\PigeonItemViewModel.cs" />
+    <Compile Include="ViewModel\Pigeon\PigeonDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Point\PointAddViewModel.cs" />
+    <Compile Include="ViewModel\Point\PointDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Point\PointDetailViewModel.cs" />
+    <Compile Include="ViewModel\Point\PointFilterViewModel.cs" />
+    <Compile Include="ViewModel\Point\PointItemsViewModel.cs" />
+    <Compile Include="ViewModel\Point\PointItemViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceResultReturnTimesViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceAddViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceDetailViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceFilterViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceItemsViewModel.cs" />
+    <Compile Include="ViewModel\Race\RaceItemViewModel.cs" />
+    <Compile Include="ViewModel\Result\ResultCommandViewModel.cs" />
+    <Compile Include="ViewModel\Result\ResultItemVM.cs" />
+    <Compile Include="ViewModel\Result\ResultMasterViewModel.cs" />
+    <Compile Include="ViewModel\Result\ResultTimeOfArrivalViewModel.cs" />
+    <Compile Include="ViewModel\Result\ResultDetailViewModel.cs" />
+    <Compile Include="ViewModel\Role\RoleAddViewModel.cs" />
+    <Compile Include="ViewModel\Role\RoleDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Role\RoleDetailViewModel.cs" />
+    <Compile Include="ViewModel\Role\RoleFilterViewModel.cs" />
+    <Compile Include="ViewModel\Role\RoleItemsViewModel.cs" />
+    <Compile Include="ViewModel\Role\RoleItemViewModel.cs" />
+    <Compile Include="ViewModel\Season\SeasonAddViewModel.cs" />
+    <Compile Include="ViewModel\Season\SeasonDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Season\SeasonDetailViewModel.cs" />
+    <Compile Include="ViewModel\Season\SeasonFilterViewModel.cs" />
+    <Compile Include="ViewModel\Season\SeasonItemsViewModel.cs" />
+    <Compile Include="ViewModel\Season\SeasonItemViewModel.cs" />
+    <Compile Include="ViewModel\UI\Base\BaseInputViewModel.cs" />
+    <Compile Include="ViewModel\UI\DateTime\DateTimeViewModel.cs" />
+    <Compile Include="ViewModel\UI\Tabs\TabsWithDateTimeViewModel.cs" />
+    <Compile Include="ViewModel\UI\Tabs\TabsWithDragViewModel.cs" />
+    <Compile Include="ViewModel\UI\DropDown\DropDownViewModel.cs" />
+    <Compile Include="ViewModel\UI\RadioButton\RadioButtonItemsViewModel.cs" />
+    <Compile Include="ViewModel\UI\TextBox\TextBoxViewModel.cs" />
+    <Compile Include="ViewModel\User\UserProfileViewModel.cs" />
+    <Compile Include="ViewModel\Registration\RegistrationViewModel.cs" />
+    <Compile Include="ViewModel\User\UserDetailsViewModel.cs" />
+    <Compile Include="ViewModel\User\UserAddViewModel.cs" />
+    <Compile Include="ViewModel\User\UserDetailViewModel.cs" />
+    <Compile Include="ViewModel\User\UserFilterViewModel.cs" />
+    <Compile Include="ViewModel\User\UserItemsViewModel.cs" />
+    <Compile Include="ViewModel\User\UserItemViewModel.cs" />
+    <Compile Include="ViewModel\User\UserLoginVM.cs" />
+    <Compile Include="View\BaseViewPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01. Common\RP.Common.csproj">
+      <Project>{9a97c205-1683-4026-a5a5-4e967241ebe2}</Project>
+      <Name>RP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\02. Model\RP.Model.csproj">
+      <Project>{d2378853-914b-4f02-91a1-4abe924deb09}</Project>
+      <Name>RP.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\03. DAL\RP.DAL.csproj">
+      <Project>{295e549e-891c-4d51-8088-8bdbcb474760}</Project>
+      <Name>RP.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

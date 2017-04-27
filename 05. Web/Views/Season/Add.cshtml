@@ -1,0 +1,25 @@
+﻿@model SeasonAddViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Season.Id)
+
+<div class="container">
+	<div class="row">
+		<br />
+		<p class="lead text-center">
+			@StyleContext.GetTranslation(Dom.Translation.Season.NewSeason)
+		</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			@using (Html.BeginForm(Mvc.Controller.Season.Add, Mvc.Controller.Season.Name, FormMethod.Post, new { @class = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				@Html.RPDropDownFor(m => m.OrganizationId, Model.OrganizationItems, isMultiSelect: false)
+				@Html.RPDropDownFor(m => m.SeasonTypeId, Model.SeasonTypeItems, hasFind: false, isMultiSelect: false)
+				@Html.RPTextBoxFor(m => m.Year)
+				<input type="submit" class="btn btn-primary" value="@StyleContext.GetTranslation(Dom.Translation.Common.Save)" />
+				<input type="button" class="btn btn-warning" value="@StyleContext.GetTranslation(Dom.Translation.Common.Cancel)" data-href="@Url.Action(Mvc.Controller.Season.List, Mvc.Controller.Season.Name)" />
+			}
+		</div>
+	</div>
+</div>

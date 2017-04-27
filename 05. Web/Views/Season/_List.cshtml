@@ -1,0 +1,25 @@
+﻿@model SeasonItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Pigeon.Year)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Season.SeasonType)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Organization.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Race.MembersPigeons)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.Season.Details, Mvc.Controller.Season.Name, new { id = item.Id })">
+			<td>@item.Year</td>
+			<td>@item.SeasonTypeName</td>
+			<td>@item.OrganizationName</td>
+			<td>@item.MemberCount\@item.PigeonCount</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

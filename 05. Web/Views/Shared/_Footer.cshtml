@@ -1,0 +1,32 @@
+﻿<footer>
+	<div class="row">
+		<hr>
+		<h2 class="text-center">@StyleContext.GetTranslation(Dom.Translation.RP.Title)</h2>
+		<hr>
+		<div class="col-sm-6">
+			@Html.Partial(Mvc.View.Registration.Add, new RegistrationViewModel())
+		</div>
+		<div class="col-sm-6 pull-right">
+			<h2 class="text-center">@StyleContext.GetTranslation(Dom.Translation.RP.About)</h2>
+			<blockquote>
+				<p class="text-justify">
+					@StyleContext.GetTranslation(Dom.Translation.RP.P1)
+					<ul>
+						<li class="text-justify">@StyleContext.GetTranslation(Dom.Translation.RP.P11)</li>
+						<li class="text-justify">@StyleContext.GetTranslation(Dom.Translation.RP.P12)</li>
+					</ul>
+				</p>
+			</blockquote>
+			<blockquote>
+				<p class="text-justify">@StyleContext.GetTranslation(Dom.Translation.RP.P2)</p>
+			</blockquote>
+			@*<blockquote>
+				<p class="text-justify">@StyleContext.GetTranslation(Dom.Translation.RP.P3)</p>
+			</blockquote>*@
+		</div>
+	</div>
+	<address class="pull-left">
+		<strong>@StyleContext.GetTranslation(Dom.Translation.RP.QuestionsAndPropositions)</strong><br>
+		<a href="mailto:@StyleContext.GetTranslation(Dom.Translation.RP.Email)">@StyleContext.GetTranslation(Dom.Translation.RP.Email)</a>
+	</address>
+</footer>

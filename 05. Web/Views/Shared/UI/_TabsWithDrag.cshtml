@@ -1,0 +1,61 @@
+﻿@model TabsWithDragViewModel
+
+<div class="form-group">
+	<label class="control-label">
+		@Model.LabelMessage
+		@if (Model.IsRequired && Model.ShowValidationMessage)
+		{
+			<span class="required">*</span>
+		}
+	</label>
+	@Model.Input
+	<div class="clearfix">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+			<div class="list-group">
+				@foreach (var item in Model.Items)
+				{
+					<a href="#" class="list-group-item text-center">
+						@item.Key
+					</a>
+				}
+			</div>
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+			@foreach (var values in Model.Items)
+			{
+				var leftColumnItems = values.Value.Where(m => !m.Selected);
+				var rightColumnItems = values.Value.Where(m => m.Selected);
+				<div class="bhoechie-tab-content">
+					<div class="pull-left">
+						<p>@StyleContext.GetTranslation(Dom.Translation.Race.NotInStatement):</p>
+						<ul class="source connected">
+							@foreach (var item in leftColumnItems)
+							{
+								<li>
+									@Html.Hidden(Model.Name + ".Value", item.Value)
+									@item.Text
+								</li>
+							}
+						</ul>
+					</div>
+					<div class="pull-right">
+						<p>@StyleContext.GetTranslation(Dom.Translation.Race.InStatement):</p>
+						<ul class="target connected">
+							@foreach (var item in rightColumnItems)
+							{
+								<li>
+									@Html.Hidden(Model.Name + ".Value", item.Value)
+									@item.Text
+								</li>
+							}
+						</ul>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+	@if (Model.ShowValidationMessage)
+	{
+		<div class="validation-section">@Model.ValidationMessage</div>
+	}
+</div>

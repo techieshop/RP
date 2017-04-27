@@ -1,0 +1,91 @@
+﻿@model UserDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.User.Id)
+
+<div class="container">
+	<div class="row">
+		<br />
+		<div class="col-md-8 col-md-offset-2">
+			@using (Html.BeginForm(Mvc.Controller.User.Edit, Mvc.Controller.User.Name, FormMethod.Post, new { @class = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				@Html.HiddenFor(m => m.Detail.Id)
+				@Html.RPTextBoxFor(m => m.Detail.LastName)
+				@Html.RPTextBoxFor(m => m.Detail.FirstName)
+				@Html.RPTextBoxFor(m => m.Detail.MiddleName)
+				@Html.RPTextBoxFor(m => m.Detail.Email)
+				@Html.RPTextBoxFor(m => m.Detail.Password)
+				@Html.RPDropDownFor(m => m.Detail.RoleOrganizationId, Model.Detail.OrganizationItems, isMultiSelect: false)
+				@Html.RPDropDownFor(m => m.Detail.RoleIds, Model.Detail.RoleItems)
+				@Html.RPRadioButtonFor(m => m.Detail.GenderId, Model.Detail.GenderItems)
+				@Html.RPDateTimeFor(m => m.Detail.DateOfBirth)
+				@Html.RPTextBoxFor(m => m.Detail.Phone)
+				@Html.RPTextBoxFor(m => m.Detail.Mobile)
+				<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD5ySDnJ4GSuMISYkb-44bbLtPam9p98pQ&country=ua&language=uk"></script>
+				<fieldset class="gllpLatlonPicker">
+					<hr class="hr-text" data-content="@StyleContext.GetTranslation(Dom.Translation.Address.EnterAddress)" />
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-12">
+							@Html.RPTextBoxFor(m => m.Address.City, cssClass: "gllpCity")
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							@Html.RPTextBoxFor(m => m.Address.PostalCode, cssClass: "gllpPostalCode")
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-12">
+							@Html.RPTextBoxFor(m => m.Address.Street, cssClass: "gllpStreet")
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							@Html.RPTextBoxFor(m => m.Address.Number, cssClass: "gllpNumber")
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+							<input type="button" class="btn btn-secondary gllpSearchSeparateAddressButton" value="@StyleContext.GetTranslation(Dom.Translation.Common.Search)">
+						</div>
+					</div>
+
+					<hr class="hr-text" data-content="@StyleContext.GetTranslation(Dom.Translation.Address.OrSearchByFullAddress)" />
+					<div class="row">
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
+							@Html.RPTextBoxFor(m => m.Address.Search, cssClass: "gllpSearch")
+							@Html.RPHiddenFor(m => m.Address.FormattedAddress, new Dictionary<string, object> { { "class", "gllpLocationName" } })
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+							<input type="button" class="btn btn-secondary gllpSearchFullAddressButton" value="@StyleContext.GetTranslation(Dom.Translation.Common.Search)">
+						</div>
+					</div>
+
+					<hr class="hr-text" data-content="@StyleContext.GetTranslation(Dom.Translation.Address.OrEnterCoordinatesManually)" />
+					<div class="row">
+						<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+							@Html.RPTextBoxFor(m => m.Address.Latitude, cssClass: "gllpLatitude")
+						</div>
+						<div class="col-lg-5 col-md-5 col-sm-5 col-xs-4">
+							@Html.RPTextBoxFor(m => m.Address.Longitude, cssClass: "gllpLongitude")
+						</div>
+						@if (Model.Address == null || string.IsNullOrWhiteSpace(Model.Address.Latitude) || string.IsNullOrWhiteSpace(Model.Address.Longitude))
+						{
+							<input type="hidden" class="gllpZoom" value="@Dom.Zoom.X6" />
+						}
+						else
+						{
+							<input type="hidden" class="gllpZoom" value="@Dom.Zoom.X12" />
+						}
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+							<input type="button" class="btn btn-secondary gllpSearchCoordinatesAddressButton" value="@StyleContext.GetTranslation(Dom.Translation.Common.Search)" />
+						</div>
+					</div>
+
+					<hr class="hr-text" data-content="@StyleContext.GetTranslation(Dom.Translation.Address.OrSelectPointManually)" />
+					<div class="row gllpMap"></div>
+					<hr />
+				</fieldset>
+				@Html.RPRadioButtonFor(m => m.Detail.LanguageId, Model.Detail.LanguageItems)
+				<input type="submit" class="btn btn-primary" value="@StyleContext.GetTranslation(Dom.Translation.Common.Save)" />
+				<input type="button" class="btn btn-warning" value="@StyleContext.GetTranslation(Dom.Translation.Common.Cancel)" data-href="@Url.Action(Mvc.Controller.User.Details, Mvc.Controller.User.Name, new {id = Model.Detail.Id})" />
+			}
+		</div>
+	</div>
+</div>

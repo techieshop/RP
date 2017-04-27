@@ -1,0 +1,17 @@
+﻿@model DateTimeViewModel
+
+<div class="form-group">
+	<label class="control-label">
+		@Model.LabelMessage
+	</label>
+	<div class="input-group">
+		@Model.Input
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-calendar"></span>
+		</span>
+	</div>
+	@if (Model.ShowValidationMessage)
+	{
+		<div class="validation-section">@Model.ValidationMessage</div>
+	}
+</div>

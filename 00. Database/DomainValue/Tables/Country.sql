@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dom].[Country]
+(
+	[Id] INT NOT NULL,
+	[Code] CHAR(2) NOT NULL,
+	[NameCode] INT NOT NULL,
+	[PhoneCode] VARCHAR(6) NOT NULL,
+	[Icon] NVARCHAR(256)
+	CONSTRAINT [PK_Country] PRIMARY KEY CLUSTERED ([Id])
+)

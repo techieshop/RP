@@ -1,0 +1,17 @@
+﻿@model RegistrationViewModel
+
+@using (Ajax.BeginForm(Mvc.Controller.Registration.Add, Mvc.Controller.Registration.Name, null, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "formId" }, new { @class = "form" }))
+{
+	<div id="formId">
+		@Html.AntiForgeryToken()
+		<h2 id="registration-form">@StyleContext.GetTranslation(Dom.Translation.Registration.Request)</h2>
+		@Html.RPTextBoxFor(m => m.OrganizationName)
+		@Html.RPTextAreaFor(m => m.CandidateInfo, 3)
+		@Html.RPTextAreaFor(m => m.HeadInfo, 3)
+		<div class="row form-group">
+			<div class="col-xs-12">
+				<button type="submit" class="btn btn-default pull-right">@StyleContext.GetTranslation(Dom.Translation.Registration.Request)</button>
+			</div>
+		</div>
+	</div>
+}

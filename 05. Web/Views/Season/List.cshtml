@@ -1,0 +1,35 @@
+﻿@model SeasonItemsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Season.Id)
+
+@if (UserContext.HasAccess(Dom.EntityType.Season.Id, Dom.AccessType.Create))
+{
+	<div class="button-add">
+		<button type="button" class="btn btn-primary" data-href="@Url.Action(Mvc.Controller.Season.Add, Mvc.Controller.Season.Name)">
+			@StyleContext.GetTranslation(Dom.Translation.Common.Add)
+		</button>
+	</div>
+}
+
+@Html.Partial(Mvc.View.Season.ListItems, Model)
+
+<nav aria-label="...">
+	<ul class="pager">
+		@if (Model.Filter.Skip > 0)
+		{
+			<li>
+				<a href="@Url.Action(Mvc.Controller.Season.List, Mvc.Controller.Season.Name, new {skip = Model.Filter.Skip - Dom.Pagination.P30 >= 0 ? Model.Filter.Skip - Dom.Pagination.P30 : 0})">
+					<span aria-hidden="true">&larr;</span> @StyleContext.GetTranslation(Dom.Translation.Common.Previous)
+				</a>
+			</li>
+		}
+		@if (Model.Count > Model.Filter.Skip + Dom.Pagination.P30)
+		{
+			<li>
+				<a href="@Url.Action(Mvc.Controller.Season.List, Mvc.Controller.Season.Name, new {skip = Model.Filter.Skip + Dom.Pagination.P30})">
+					@StyleContext.GetTranslation(Dom.Translation.Common.Next) <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+		}
+	</ul>
+</nav>

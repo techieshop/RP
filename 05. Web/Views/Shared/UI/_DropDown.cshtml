@@ -1,0 +1,62 @@
+﻿@model DropDownViewModel
+
+@{
+	string hidden = "";
+	if (!string.IsNullOrWhiteSpace(Model.DataDepends) && !Model.Items.Any())
+	{
+		hidden = "display:none";
+	}
+}
+
+<div class="form-group" style="@hidden">
+	<label class="control-label">
+		@Model.LabelMessage
+		@if (Model.IsRequired && Model.ShowValidationMessage)
+		{
+			<span class="required">*</span>
+		}
+	</label>
+	<div class="select-wrap">
+		<div class="display-n">@Model.PlaceholderMessage</div>
+		@if (string.IsNullOrWhiteSpace(Model.SelectedValue))
+		{
+			<div class="hint">@Model.PlaceholderMessage</div>
+		}
+		else
+		{
+			<div class="hint">@Model.SelectedValue</div>
+		}
+		<div class="popup-select">
+			@if (Model.HasFind)
+			{
+				<div class="select-dropdownitems-wrap">
+					<input type="text" placeholder="@Model.HelpTitleMessage" class="select-dropdownitems" />
+				</div>
+			}
+			<div class="dropdown-list-wrap">
+				@Model.Input
+				<ul class="dropdown-list" id="@Model.DataId" data-depends="@Model.DataDepends" data-url="@Model.DataUrl">
+					@{ int i = 0; }
+					@foreach (var item in Model.Items)
+					{
+						string cssClass = item.Selected ? "dropdown-label-active" : "";
+						string forName = Model.Name + "[" + i++ + "]";
+						<li>
+							<label for=@forName class="dropdown-label @cssClass">
+								<i></i>
+								<span>@item.Text</span>
+								@Html.Hidden(forName + ".Value", item.Value)
+								@Html.Hidden(forName + ".Text", item.Text)
+								@Html.CheckBox(forName + ".Selected", item.Selected, new { id = forName, @class = Model.IsMultiSelect ? "check-dropdown-multi-select" : "check-dropdown-single-select" })
+							</label>
+						</li>
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+	@if (Model.ShowValidationMessage)
+	{
+		<div class="validation-section">@Model.ValidationMessage</div>
+	}
+</div>

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2378853-914B-4F02-91A1-4ABE924DEB09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RP.Model</RootNamespace>
+    <AssemblyName>RP.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DomainModel\Address\DAO\Address.cs" />
+    <Compile Include="DomainModel\Address\DAO\Website.cs" />
+    <Compile Include="DomainModel\Address\DTO\AddressRef.cs" />
+    <Compile Include="DomainModel\Address\DTO\WebsiteRef.cs" />
+    <Compile Include="DomainModel\Base\BaseDetail.cs" />
+    <Compile Include="DomainModel\Base\BaseDetails.cs" />
+    <Compile Include="DomainModel\Base\BaseEntity.cs" />
+    <Compile Include="DomainModel\Base\BaseEntityFilter.cs" />
+    <Compile Include="DomainModel\Base\BaseFilter.cs" />
+    <Compile Include="DomainModel\Base\BaseItem.cs" />
+    <Compile Include="DomainModel\Base\BaseItems.cs" />
+    <Compile Include="DomainModel\Base\BaseModel.cs" />
+    <Compile Include="DomainModel\Base\SelectListItem.cs" />
+    <Compile Include="DomainModel\Domain\DAO\Country.cs" />
+    <Compile Include="DomainModel\Domain\DAO\DomainValue.cs" />
+    <Compile Include="DomainModel\Domain\DAO\DomainValueType.cs" />
+    <Compile Include="DomainModel\Entity\DAO\EntityInfo.cs" />
+    <Compile Include="DomainModel\Entity\DAO\EntityOrganization.cs" />
+    <Compile Include="DomainModel\Entity\DAO\EntityProgress.cs" />
+    <Compile Include="DomainModel\Entity\DAO\EntityState.cs" />
+    <Compile Include="DomainModel\Entity\DAO\EntityStateTransition.cs" />
+    <Compile Include="DomainModel\Entity\DAO\EntityType.cs" />
+    <Compile Include="DomainModel\Member\DAO\Member.cs" />
+    <Compile Include="DomainModel\Member\DTO\Details\PublicMemberDetail.cs" />
+    <Compile Include="DomainModel\Member\DTO\Details\MemberDetail.cs" />
+    <Compile Include="DomainModel\Member\DTO\Details\PublicMemberDetails.cs" />
+    <Compile Include="DomainModel\Member\DTO\Details\MemberDetails.cs" />
+    <Compile Include="DomainModel\Member\DTO\List\PublicMemberFilter.cs" />
+    <Compile Include="DomainModel\Member\DTO\List\MemberFilter.cs" />
+    <Compile Include="DomainModel\Member\DTO\List\PublicMemberItem.cs" />
+    <Compile Include="DomainModel\Member\DTO\List\MemberItem.cs" />
+    <Compile Include="DomainModel\Member\DTO\List\PublicMemberItems.cs" />
+    <Compile Include="DomainModel\Member\DTO\List\MemberItems.cs" />
+    <Compile Include="DomainModel\Member\DTO\MemberRef.cs" />
+    <Compile Include="DomainModel\Organization\DAO\Organization.cs" />
+    <Compile Include="DomainModel\Organization\DAO\OrganizationMemberType.cs" />
+    <Compile Include="DomainModel\Organization\DAO\OrganizationRelation.cs" />
+    <Compile Include="DomainModel\Organization\DTO\Details\PublicOrganizationDetail.cs" />
+    <Compile Include="DomainModel\Organization\DTO\Details\OrganizationDetail.cs" />
+    <Compile Include="DomainModel\Organization\DTO\Details\PublicOrganizationDetails.cs" />
+    <Compile Include="DomainModel\Organization\DTO\Details\OrganizationDetails.cs" />
+    <Compile Include="DomainModel\Organization\DTO\List\PublicOrganizationFilter.cs" />
+    <Compile Include="DomainModel\Organization\DTO\List\OrganizationFilter.cs" />
+    <Compile Include="DomainModel\Organization\DTO\List\PublicOrganizationItem.cs" />
+    <Compile Include="DomainModel\Organization\DTO\List\OrganizationItem.cs" />
+    <Compile Include="DomainModel\Organization\DTO\List\PublicOrganizationItems.cs" />
+    <Compile Include="DomainModel\Organization\DTO\List\OrganizationItems.cs" />
+    <Compile Include="DomainModel\Organization\DTO\OrganizationMemberTypeRef.cs" />
+    <Compile Include="DomainModel\Organization\DTO\OrganizationRelationRef.cs" />
+    <Compile Include="DomainModel\Pigeon\DAO\Pigeon.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\Details\PublicPigeonDetail.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\Details\PigeonDetail.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\Details\PublicPigeonDetails.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\Details\PigeonDetails.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\List\PublicPigeonFilter.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\List\PigeonFilter.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\List\PublicPigeonItem.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\List\PigeonItem.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\List\PublicPigeonItems.cs" />
+    <Compile Include="DomainModel\Pigeon\DTO\List\PigeonItems.cs" />
+    <Compile Include="DomainModel\Pigeon\PigeonRef.cs" />
+    <Compile Include="DomainModel\Race\DAO\CommonRace.cs" />
+    <Compile Include="DomainModel\Race\DAO\Race.cs" />
+    <Compile Include="DomainModel\Race\DAO\RaceStatistic.cs" />
+    <Compile Include="DomainModel\Race\DAO\RaceDistance.cs" />
+    <Compile Include="DomainModel\Race\DAO\RacePigeon.cs" />
+    <Compile Include="DomainModel\Point\DAO\Point.cs" />
+    <Compile Include="DomainModel\Race\DAO\RaceResult.cs" />
+    <Compile Include="DomainModel\Race\DAO\PigeonReturnTime.cs" />
+    <Compile Include="DomainModel\Race\DAO\RaceResultCategory.cs" />
+    <Compile Include="DomainModel\Point\DTO\Details\PointDetail.cs" />
+    <Compile Include="DomainModel\Point\DTO\Details\PointDetails.cs" />
+    <Compile Include="DomainModel\Point\DTO\List\PointFilter.cs" />
+    <Compile Include="DomainModel\Point\DTO\List\PointItem.cs" />
+    <Compile Include="DomainModel\Point\DTO\List\PointItems.cs" />
+    <Compile Include="DomainModel\Race\DTO\Details\RaceDetail.cs" />
+    <Compile Include="DomainModel\Race\DTO\Details\RaceDetails.cs" />
+    <Compile Include="DomainModel\Race\DTO\List\RaceFilter.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultDetailCommon.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultMasterItem.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultCommandItem.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultTimeItem.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultMasterItems.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultCommandItems.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultTimeItems.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultItem.cs" />
+    <Compile Include="DomainModel\Race\DTO\List\RaceItem.cs" />
+    <Compile Include="DomainModel\Race\DTO\List\RaceItems.cs" />
+    <Compile Include="DomainModel\Race\DTO\RaceResultReturnTimes.cs" />
+    <Compile Include="DomainModel\Race\DTO\PigeonReturnTimeRef.cs" />
+    <Compile Include="DomainModel\Race\DTO\ResultDetail.cs" />
+    <Compile Include="DomainModel\Role\DAO\Role.cs" />
+    <Compile Include="DomainModel\Role\DAO\RoleEntityStateAccess.cs" />
+    <Compile Include="DomainModel\Role\DAO\RoleEntityStateTransitionAccess.cs" />
+    <Compile Include="DomainModel\Role\DAO\RoleEntityTypeAccess.cs" />
+    <Compile Include="DomainModel\Role\DTO\Details\RoleDetail.cs" />
+    <Compile Include="DomainModel\Role\DTO\Details\RoleDetails.cs" />
+    <Compile Include="DomainModel\Role\DTO\List\RoleFilter.cs" />
+    <Compile Include="DomainModel\Role\DTO\List\RoleItem.cs" />
+    <Compile Include="DomainModel\Role\DTO\List\RoleItems.cs" />
+    <Compile Include="DomainModel\Season\DAO\Season.cs" />
+    <Compile Include="DomainModel\Season\DAO\Statement.cs" />
+    <Compile Include="DomainModel\Season\DTO\Details\SeasonDetail.cs" />
+    <Compile Include="DomainModel\Season\DTO\Details\SeasonDetails.cs" />
+    <Compile Include="DomainModel\Season\DTO\List\SeasonFilter.cs" />
+    <Compile Include="DomainModel\Season\DTO\List\SeasonItem.cs" />
+    <Compile Include="DomainModel\Season\DTO\List\SeasonItems.cs" />
+    <Compile Include="DomainModel\Template\DAO\Template.cs" />
+    <Compile Include="DomainModel\Translation\DAO\Translation.cs" />
+    <Compile Include="DomainModel\Translation\DAO\TranslationCode.cs" />
+    <Compile Include="DomainModel\Translation\DTO\TranslationRef.cs" />
+    <Compile Include="DomainModel\UDT\KeyList.cs" />
+    <Compile Include="DomainModel\Registration\DAO\Registration.cs" />
+    <Compile Include="DomainModel\User\DAO\User.cs" />
+    <Compile Include="DomainModel\User\DAO\UserRole.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\Access.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\EntityStateAccess.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\EntityStateTransitionAccess.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\EntityTypeAccess.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\EntityTypeAccessExt.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\UserData.cs" />
+    <Compile Include="DomainModel\User\DTO\Details\UserDetail.cs" />
+    <Compile Include="DomainModel\User\DTO\Details\UserDetails.cs" />
+    <Compile Include="DomainModel\User\DTO\List\UserFilter.cs" />
+    <Compile Include="DomainModel\User\DTO\List\UserItem.cs" />
+    <Compile Include="DomainModel\User\DTO\List\UserItems.cs" />
+    <Compile Include="DomainModel\User\DTO\Auth\UserAuth.cs" />
+    <Compile Include="DomainModel\User\UserProfile.cs" />
+    <Compile Include="DomainModel\User\UserRoleRef.cs" />
+    <Compile Include="DomainValue\EntityType.Member.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Organization.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Pigeon.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Point.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Race.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Result.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Season.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.Template.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.User.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\DomainValue.cs" />
+    <Compile Include="DomainValue\EntityType.Role.cs">
+      <DependentUpon>EntityType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\EntityType.cs" />
+    <Compile Include="DomainValue\Translation.Address.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.cs" />
+    <Compile Include="DomainValue\Translation.DomainValue.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Error.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Member.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Olymp.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Organization.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Pigeon.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Point.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Race.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Registration.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Result.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Role.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.RP.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Season.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.User.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Validation.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainValue\Translation.Website.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01. Common\RP.Common.csproj">
+      <Project>{9a97c205-1683-4026-a5a5-4e967241ebe2}</Project>
+      <Name>RP.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

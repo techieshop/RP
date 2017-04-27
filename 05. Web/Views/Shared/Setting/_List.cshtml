@@ -1,0 +1,60 @@
+﻿@model int?
+
+@{
+	string userActive = Dom.EntityType.User.Id == Model ? "active" : "";
+	string roleActive = Dom.EntityType.Role.Id == Model ? "active" : "";
+	string organizationActive = Dom.EntityType.Organization.Id == Model ? "active" : "";
+	string memberActive = Dom.EntityType.Member.Id == Model ? "active" : "";
+	string pigeonActive = Dom.EntityType.Pigeon.Id == Model ? "active" : "";
+	string seasonActive = Dom.EntityType.Season.Id == Model ? "active" : "";
+	string pointActive = Dom.EntityType.Point.Id == Model ? "active" : "";
+	string raceActive = Dom.EntityType.Race.Id == Model ? "active" : "";
+	string resultActive = Dom.EntityType.Result.Id == Model ? "active" : "";
+}
+
+<ul class="nav nav-tabs">
+	@if (UserContext.HasAccess(Dom.EntityType.User.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@userActive"><a href="@Url.Action(Mvc.Controller.User.List, Mvc.Controller.User.Name)"><span class="glyphicon glyphicon-user"></span> @StyleContext.GetTranslation(Dom.Translation.User.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Role.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@roleActive"><a href="@Url.Action(Mvc.Controller.Role.List, Mvc.Controller.Role.Name)"><span class="glyphicon glyphicon-flash"></span> @StyleContext.GetTranslation(Dom.Translation.Role.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Organization.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@organizationActive"><a href="@Url.Action(Mvc.Controller.Organization.List, Mvc.Controller.Organization.Name)"><span class="glyphicon glyphicon-globe"></span> @StyleContext.GetTranslation(Dom.Translation.Organization.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Member.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@memberActive"><a href="@Url.Action(Mvc.Controller.Member.List, Mvc.Controller.Member.Name)"><span class="glyphicon glyphicon-user"></span> @StyleContext.GetTranslation(Dom.Translation.Member.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Pigeon.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@pigeonActive">
+			<a href="@Url.Action(Mvc.Controller.Pigeon.List, Mvc.Controller.Pigeon.Name)">
+				<span>
+					<i class="img-circle avatar avatar-original">
+						<img src="~/Images/logo.png" alt="RP" width="20" height="20" />
+					</i>
+				</span> @StyleContext.GetTranslation(Dom.Translation.Pigeon.Plural)
+			</a>
+		</li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Season.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@seasonActive"><a href="@Url.Action(Mvc.Controller.Season.List, Mvc.Controller.Season.Name)"><span class="glyphicon glyphicon-list-alt"></span> @StyleContext.GetTranslation(Dom.Translation.Season.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Point.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@pointActive"><a href="@Url.Action(Mvc.Controller.Point.List, Mvc.Controller.Point.Name)"><span class="glyphicon glyphicon-map-marker"></span> @StyleContext.GetTranslation(Dom.Translation.Point.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Race.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@raceActive"><a h href="@Url.Action(Mvc.Controller.Race.List, Mvc.Controller.Race.Name)"><span class="glyphicon glyphicon-plane"></span> @StyleContext.GetTranslation(Dom.Translation.Race.Plural)</a></li>
+	}
+	@if (UserContext.HasAccess(Dom.EntityType.Result.Id, Dom.AccessType.Read))
+	{
+		<li role="presentation" class="@resultActive"><a h href="@Url.Action(Mvc.Controller.Result.List, Mvc.Controller.Result.Name)"><span class="glyphicon glyphicon-stats"></span> @StyleContext.GetTranslation(Dom.Translation.Result.Plural)</a></li>
+	}
+</ul>

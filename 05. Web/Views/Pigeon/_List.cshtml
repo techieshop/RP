@@ -1,0 +1,27 @@
+﻿@model PigeonItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Pigeon.Ring)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Sex.Name)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Pigeon.Trainer)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Organization.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Pigeon.CountOfPrizes)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.Pigeon.Details, Mvc.Controller.Pigeon.Name, new { id = item.Id })">
+			<td>@item.Ring</td>
+			<td>@item.Sex</td>
+			<td>@item.OwnerFormattedName</td>
+			<td>@item.OrganizationName</td>
+			<td>@item.PrizeCount</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

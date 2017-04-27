@@ -1,0 +1,43 @@
+﻿@model OrganizationItemsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Organization.Id)
+
+@if (UserContext.HasAccess(Dom.EntityType.Organization.Id, Dom.AccessType.Create))
+{
+	<div class="button-add">
+		<button type="button" class="btn btn-primary" data-href="@Url.Action(Mvc.Controller.Organization.Add, Mvc.Controller.Organization.Name)">
+			@StyleContext.GetTranslation(Dom.Translation.Common.Add)
+		</button>
+	</div>
+}
+
+@Html.Partial(Mvc.View.Organization.ListItems, Model)
+
+<div class="results">
+	<span>@StyleContext.GetTranslation(Dom.Translation.Organization.CountOfOrganizations) @Model.Count</span>
+	<span>|</span>
+	<span>@StyleContext.GetTranslation(Dom.Translation.Member.CountOfMembers) @Model.MemberCount</span>
+	<span>|</span>
+	<span>@StyleContext.GetTranslation(Dom.Translation.Pigeon.CountOfPigeons) @Model.PigeonCount</span>
+</div>
+
+<nav aria-label="...">
+	<ul class="pager">
+		@if (Model.Filter.Skip > 0)
+		{
+			<li>
+				<a href="@Url.Action(Mvc.Controller.Organization.List, Mvc.Controller.Organization.Name, new {skip = Model.Filter.Skip - Dom.Pagination.P30 >= 0 ? Model.Filter.Skip - Dom.Pagination.P30 : 0})">
+					<span aria-hidden="true">&larr;</span> @StyleContext.GetTranslation(Dom.Translation.Common.Previous)
+				</a>
+			</li>
+		}
+		@if (Model.Count > Model.Filter.Skip + Dom.Pagination.P30)
+		{
+			<li>
+				<a href="@Url.Action(Mvc.Controller.Organization.List, Mvc.Controller.Organization.Name, new {skip = Model.Filter.Skip + Dom.Pagination.P30})">
+					@StyleContext.GetTranslation(Dom.Translation.Common.Next) <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+		}
+	</ul>
+</nav>

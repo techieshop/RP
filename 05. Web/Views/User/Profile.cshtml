@@ -1,0 +1,48 @@
+﻿@model UserProfileViewModel
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-2 text-center">
+					<i class="img-circle avatar avatar-original glyphicon glyphicon-user blue gi-5x"></i>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="only-bottom-margin">@Model.FormattedName</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Email):</span> @Model.Email<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.DateOfBirth):</span> @Model.DateOfBirth.ToShortDateString(CultureManager.ServerDateFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Gender.Name):</span> @Model.Gender<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Telephone):</span> @Model.Phone<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Mobile):</span> @Model.Mobile<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.User.Salutation):</span> @Model.Salutation<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Language.Name):</span> @Model.Language<br>
+						</div>
+						<div class="col-md-4">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			@if (Model.Address != null)
+			{
+				@Html.Partial(Mvc.View.UI.GoogleMap, Model.Address)
+			}
+
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+					<button class="btn btn-default pull-right" data-href="@Url.Action(Mvc.Controller.User.ProfileEdit, Mvc.Controller.User.Name)">
+						<i class="glyphicon glyphicon-pencil"></i> @StyleContext.GetTranslation(Dom.Translation.Common.Edit)
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

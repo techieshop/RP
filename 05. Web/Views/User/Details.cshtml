@@ -1,0 +1,67 @@
+﻿@model UserDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.User.Id)
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="@Url.Action(Mvc.Controller.User.List, Mvc.Controller.User.Name)">
+						<i class="glyphicon glyphicon-arrow-left"></i>
+						@StyleContext.GetTranslation(Dom.Translation.User.BackToUserList)
+					</a>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center">
+					<i class="img-circle avatar avatar-original glyphicon glyphicon-user blue gi-5x"></i>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="only-bottom-margin">@Model.Detail.FormattedName</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Status):</span> @StyleContext.GetTranslation(Model.Detail.EntityStateNameCode)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.DateOfBirth):</span> @Model.Detail.DateOfBirth.ToShortDateString(CultureManager.ServerDateFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Gender.Name):</span> @Model.Detail.Gender<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Email):</span> @Model.Detail.Email<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Telephone):</span> @Model.Detail.Phone<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Mobile):</span> @Model.Detail.Mobile<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Language.Name):</span> @Model.Detail.Language<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.User.Salutation):</span> @Model.Detail.Salutation<br>
+						</div>
+						<div class="col-md-4">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			@if (Model.Address != null)
+			{
+				@Html.Partial(Mvc.View.UI.GoogleMap, Model.Address)
+			}
+
+			@if (UserContext.HasAccess(Dom.EntityType.User.Id, Dom.AccessType.ReadWrite))
+			{
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+					@if (Model.Detail.HasEntityStateChangeAccess)
+					{
+						@Html.Partial(Mvc.View.Entity.EntityStateChange, Model.Detail.EntityStateChange)
+					}
+					<button class="btn btn-default pull-right" data-href="@Url.Action(Mvc.Controller.User.Edit, Mvc.Controller.User.Name, new {id = Model.Detail.Id})">
+						<i class="glyphicon glyphicon-pencil"></i> @StyleContext.GetTranslation(Dom.Translation.Common.Edit)
+					</button>
+				</div>
+			</div>
+			}
+		</div>
+	</div>
+</div>

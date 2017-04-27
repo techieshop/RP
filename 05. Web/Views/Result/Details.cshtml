@@ -1,0 +1,117 @@
+﻿@model ResultDetailViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Result.Id)
+
+<br>
+<div class="container">
+	<h4 class="text-center">@Model.Name</h4>
+	<div class="row">
+		<div class="col-md-6 col-sm-4 col-xs-0">
+			<img src="~/Images/logo.png" alt="RP" width="250" height="250" />
+		</div>
+		<div class="col-md-3 col-sm-4 col-xs-6 text-left">
+			<i>@StyleContext.GetTranslation(Dom.Translation.Season.Singular):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.PlaceOfStart):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Race.StartRaceTime):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Member.CountOfMembers):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Pigeon.CountOfPigeons):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.AverageDistance):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.TimeOfTheFirst):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.TimeOfTheLast):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.TheSpeedOfTheFirst):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.TheSpeedOfTheLatter):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Race.StartCompetitionTime):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Race.EndCompetitionTime):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.TheDurationOfTheCompetition):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Result.CompetitionTwentyPercent):</i><br />
+			<i>@StyleContext.GetTranslation(Dom.Translation.Race.Weather):</i><br />
+		</div>
+		<div class="col-md-3 col-sm-4 col-xs-6 text-left">
+			<b>@Model.SeasonName</b><br />
+			<b>@Model.PointName (@Model.Latitude, @Model.Longitude)</b><br />
+			<b>@Model.StartRaceTime.ToShortDateString(CultureManager.DateTimeFormat)</b><br />
+			<b>@Model.MemberCount</b><br />
+			<b>@Model.PigeonCount</b><br />
+			<b>@Model.AverageDistance.ToString("N3")</b><br />
+			<b>@Model.TimeOfFirst.ToShortDateString(CultureManager.DateTimeFormat)</b><br />
+			<b>@Model.TimeOfLast.ToShortDateString(CultureManager.DateTimeFormat)</b><br />
+			<b>@Model.SpeedOfFirst.ToString("N3")</b><br />
+			<b>@Model.SpeedOfLast.ToString("N3")</b><br />
+			<b>@Model.StartСompetitionTime.ToShortDateString(CultureManager.DateTimeFormat)</b><br />
+			<b>@Model.EndСompetitionTime.ToShortDateString(CultureManager.DateTimeFormat)</b><br />
+			<b>@Model.DurationOfCompetitionTimeSpan.ToString(@"hh\:mm\:ss")</b><br />
+			<b>@Model.TwentyPercent</b><br />
+			<b>@Model.Weather</b><br />
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Result.OrganizationName)</th>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Member.CountOfMembers)</th>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Result.MemberTwentyPercentAFact)</th>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Result.StatedPigeons)</th>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Result.TwentyPercentOfPigeons)</th>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Result.PigeonsTwentyPercentAFact)</th>
+					<th>@StyleContext.GetTranslation(Dom.Translation.Result.InFactAbidedPercent)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>@Model.OrganizationName (#@Model.OrganizationId)</td>
+					<td>@Model.MemberCount</td>
+					<td>@Model.MemberTwentyPercentAFact</td>
+					<td>@Model.PigeonCount</td>
+					<td>@Model.TwentyPercent</td>
+					<td>@Model.PigeonTwentyPercentAFact</td>
+					<td>@Model.InFactAbidedPercent</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<b>@StyleContext.GetTranslation(Dom.Translation.Result.FlyStatistics):</b>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+			<div class="col-md-2 col-sm-3 col-xs-3">
+				<i>@StyleContext.GetTranslation(Dom.Translation.Sex.Name):</i><br />
+				<i>@StyleContext.GetTranslation(Dom.Translation.Sex.Cock):</i><br />
+				<i>@StyleContext.GetTranslation(Dom.Translation.Sex.Hen):</i><br />
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<br />
+				<b>@Model.CockCount</b><br />
+				<b>@Model.HenCount</b><br />
+			</div>
+			<div class="col-md-2 col-sm-3 col-xs-3">
+				<i>@StyleContext.GetTranslation(Dom.Translation.Result.Young):</i><br />
+				<i>@StyleContext.GetTranslation(Dom.Translation.Result.Yearly):</i><br />
+				<i>@StyleContext.GetTranslation(Dom.Translation.Result.Adults):</i><br />
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<b>@Model.YoungCount</b><br />
+				<b>@Model.YearlyCount</b><br />
+				<b>@Model.AdultsCount</b><br />
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div class="row">
+		<div class="pull-right">
+			<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Result.DownloadTitlePdfFile, Mvc.Controller.Result.Name, new { id = Model.Id })">
+				<i class="fa fa-file-pdf-o"></i> @StyleContext.GetTranslation(Dom.Translation.Result.Title)
+			</button>
+			<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Result.DownloadTimePdfFile, Mvc.Controller.Result.Name, new {id = Model.Id})">
+				<i class="fa fa-file-pdf-o"></i> @StyleContext.GetTranslation(Dom.Translation.Result.Time)
+			</button>
+			<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Result.DownloadCommandPdfFile, Mvc.Controller.Result.Name, new { id = Model.Id })">
+				<i class="fa fa-file-pdf-o"></i> @StyleContext.GetTranslation(Dom.Translation.Result.Command)
+			</button>
+			<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Result.DownloadMasterPdfFile, Mvc.Controller.Result.Name, new {id = Model.Id})">
+				<i class="fa fa-file-pdf-o"></i> @StyleContext.GetTranslation(Dom.Translation.Result.Master)
+			</button>
+		</div>
+	</div>
+</div>

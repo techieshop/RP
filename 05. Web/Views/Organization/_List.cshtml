@@ -1,0 +1,29 @@
+﻿@model OrganizationItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Name)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Member.CountOfMembers)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.MemberType.Head)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.MemberType.Judge)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.Organization.Details, Mvc.Controller.Organization.Name, new { id = item.Id })">
+			<td>@item.Name</td>
+			<td>@item.MemberCount</td>
+			<td>
+				@item.Heads.Select(m => m.Value).Join(" • ")
+			</td>
+			<td>
+				@item.Judges.Select(m => m.Value).Join(" • ")
+			</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

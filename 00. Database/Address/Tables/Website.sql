@@ -1,0 +1,7 @@
+﻿CREATE TABLE [acc].[Website]
+(
+	[Id] INT NOT NULL IDENTITY,
+	[Url] NVARCHAR(256) NOT NULL,
+	[Description] NVARCHAR(MAX) NULL,
+	CONSTRAINT [PK_Website] PRIMARY KEY CLUSTERED ([Id])
+)

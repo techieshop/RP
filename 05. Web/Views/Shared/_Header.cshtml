@@ -1,0 +1,50 @@
+﻿<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-nav">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<img src="~/Images/logo.png" alt="RP" class="navbar-brand" data-href="@Url.Action(Mvc.Controller.Home.Dashboard, Mvc.Controller.Home.Name)" />
+		</div>
+		<div class="collapse navbar-collapse" id="collapse-nav">
+			<ul class="nav navbar-nav navbar-right">
+				@if (Request.IsAuthenticated)
+				{
+					if (UserContext.User.Id == Dom.Common.UserId)
+					{
+						var registrations = UserContext.GetRegistrations();
+						int nr = 0;
+						if (registrations != null && registrations.Any())
+						{
+							nr = registrations.Count(r => !r.IsRead);
+						}
+						<li>
+							<a href="@Url.Action(Mvc.Controller.Registration.List, Mvc.Controller.Registration.Name)">
+								<span class="glyphicon glyphicon-registration-mark"></span> @StyleContext.GetTranslation(Dom.Translation.Registration.Plural)
+								<span class="badge">@nr</span>
+							</a>
+						</li>
+					}
+					<li><a href="@Url.Action(Mvc.Controller.Setting.List, Mvc.Controller.Setting.Name)"><span class="glyphicon glyphicon-cog"></span> @StyleContext.GetTranslation(Dom.Translation.Common.SettingsPanel)</a></li>
+					<li><a href="@Url.Action(Mvc.Controller.User.Profile, Mvc.Controller.User.Name)"><span class="glyphicon glyphicon-user"></span> @StyleContext.GetTranslation(Dom.Translation.User.Profile)</a></li>
+					<li><a href="@Url.Action(Mvc.Controller.User.LogOut, Mvc.Controller.User.Name)"><span class="glyphicon glyphicon-log-out"></span> @StyleContext.GetTranslation(Dom.Translation.User.LogOut)</a></li>
+				}
+				else if ((string)ViewContext.RouteData.Values["controller"] != Mvc.Controller.User.Name)
+				{
+					<li class="align-middle">
+						<button type="button" class="btn btn-default" data-href="@Url.Action(Mvc.Controller.User.LogIn, Mvc.Controller.User.Name)">
+							<span class="glyphicon glyphicon-log-in"></span>
+							@StyleContext.GetTranslation(Dom.Translation.User.LogIn)
+						</button>
+						<button type="button" class="btn btn-default" data-href="#registration-form">
+							<span class="glyphicon glyphicon-registration-mark"></span>
+							@StyleContext.GetTranslation(Dom.Translation.Registration.Request)
+						</button>
+					</li>
+				}
+			</ul>
+		</div>
+	</div>
+</nav>

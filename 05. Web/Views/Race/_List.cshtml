@@ -1,0 +1,29 @@
+﻿@model RaceItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Name)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Race.RaceType)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Organization.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Season.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Point.Singular)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Race.MembersPigeons)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.Race.Details, Mvc.Controller.Race.Name, new { id = item.Id })">
+			<td>@item.Name</td>
+			<td>@item.RaceTypeName</td>
+			<td>@item.OrganizationName</td>
+			<td>@item.SeasonName</td>
+			<td>@item.PointName</td>
+			<td>@item.MemberCount\@item.PigeonCount</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model UserItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.User.LastName)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.User.FirstName)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.User.MiddleName)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Telephone)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Mobile)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Email)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.User.Details, Mvc.Controller.User.Name, new { id = item.Id })">
+			<td>@item.LastName</td>
+			<td>@item.FirstName</td>
+			<td>@item.MiddleName</td>
+			<td>@item.Phone</td>
+			<td>@item.Mobile</td>
+			<td>@item.Email</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

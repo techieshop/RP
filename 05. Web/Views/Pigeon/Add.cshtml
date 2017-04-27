@@ -1,0 +1,27 @@
+﻿@model PigeonAddViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Pigeon.Id)
+
+<div class="container">
+	<div class="row">
+		<br />
+		<p class="lead text-center">
+			@StyleContext.GetTranslation(Dom.Translation.Pigeon.NewPigeon)
+		</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			@using (Html.BeginForm(Mvc.Controller.Pigeon.Add, Mvc.Controller.Pigeon.Name, FormMethod.Post, new { @class = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				@Html.RPDropDownFor(m => m.OwnerId, Model.OwnerItems, isMultiSelect: false)
+				@Html.RPTextBoxFor(m => m.Year)
+				@Html.RPTextBoxFor(m => m.Code)
+				@Html.RPTextBoxFor(m => m.Number)
+				@Html.RPRadioButtonFor(m => m.SexId, Model.SexItems)
+				<input type="submit" class="btn btn-primary" value="@StyleContext.GetTranslation(Dom.Translation.Common.Save)" />
+				<input type="button" class="btn btn-warning" value="@StyleContext.GetTranslation(Dom.Translation.Common.Cancel)" data-href="@Url.Action(Mvc.Controller.Pigeon.List, Mvc.Controller.Pigeon.Name)" />
+			}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,90 @@
+@model ResultTimeItems
+
+@{
+	int counter = 0;
+	int pageNumber = 1;
+	int itemCount = Model.Items.Count;
+}
+
+<html>
+<head>
+	<title>@StyleContext.GetTranslation(Dom.Translation.Result.Time)</title>
+	<style>
+		table {
+			border: 1px solid transparent;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+		tr {
+			text-align: center;
+		}
+
+		td {
+			border: 1px solid #c0c0c0;
+		}
+
+			td.td-empty {
+				margin-top: 20px;
+				margin-bottom: 20px;
+				border: 0 none;
+			}
+	</style>
+</head>
+<body>
+	<h3 align="center">@StyleContext.GetTranslation(Dom.Translation.Season.Singular) @Model.Detail.SeasonName, @StyleContext.GetTranslation(Dom.Translation.Race.Singular) @Model.Detail.Name, @Model.Detail.StartRaceTime.ToShortDateString(CultureManager.DateTimeFormat)</h3>
+	<table cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Position)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Sex.Name)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Distance)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Arrival)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.FlyTime)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Speed)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Mark)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Coefficient)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Ac)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Member.Singular)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Common.Number)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.OrganizationType.Club)</td>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < itemCount; i++)
+			{
+				var item = Model.Items.ToList()[i];
+				counter++;
+				<tr>
+					<td>@item.Position</td>
+					<td>@item.Sex</td>
+					<td>@item.Distance.ToString("N3")</td>
+					<td>@item.ReturnTime.ToShortDateString(CultureManager.TimeFormat)</td>
+					<td>@item.FlyTimeSpan.ToString(@"hh\:mm\:ss")</td>
+					<td>@item.Speed.ToString("N3")</td>
+					<td>@item.Mark.ToString("N2")</td>
+					<td>@item.Coefficient.ToString("N2")</td>
+					<td>@Convert.ToInt32(item.Ac)</td>
+					<td>@item.Member</td>
+					<td>@item.Id</td>
+					<td>@item.OrganizationName</td>
+				</tr>
+				if ((counter > 47 && pageNumber == 1) || (counter > 51 && pageNumber > 1))
+				{
+					counter = 0;
+					pageNumber++;
+					<tr>
+						<td colspan="12" class="td-empty">
+							@if (i + 1 < itemCount)
+							{
+								<br />
+							}
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</body>
+</html>

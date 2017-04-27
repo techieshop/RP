@@ -1,0 +1,60 @@
+﻿@model PigeonDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Pigeon.Id)
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="@Url.Action(Mvc.Controller.Pigeon.List, Mvc.Controller.Pigeon.Name)">
+						<i class="glyphicon glyphicon-arrow-left"></i>
+						@StyleContext.GetTranslation(Dom.Translation.Pigeon.BackToPigeonList)
+					</a>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center">
+					<i class="img-circle avatar avatar-original">
+						<img src="~/Images/logo.png" alt="RP" width="100" height="100"/>
+					</i>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="only-bottom-margin">@Model.Detail.Ring</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Status):</span> @StyleContext.GetTranslation(Model.Detail.EntityStateNameCode)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Pigeon.Trainer):</span> @Model.Detail.OwnerFormattedName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Organization.Singular):</span> @Model.Detail.OrganizationName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Sex.Name):</span> @Model.Detail.Sex<br>
+						</div>
+						<div class="col-md-4">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Pigeon.CountOfPrizes): @Model.Detail.PrizeCount</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			@if (UserContext.HasAccess(Dom.EntityType.Pigeon.Id, Dom.AccessType.ReadWrite))
+			{
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+					@if (Model.Detail.HasEntityStateChangeAccess)
+					{
+						@Html.Partial(Mvc.View.Entity.EntityStateChange, Model.Detail.EntityStateChange)
+					}
+					<button class="btn btn-default pull-right" data-href="@Url.Action(Mvc.Controller.Pigeon.Edit, Mvc.Controller.Pigeon.Name, new {id = Model.Detail.Id})">
+						<i class="glyphicon glyphicon-pencil"></i> @StyleContext.GetTranslation(Dom.Translation.Common.Edit)
+					</button>
+				</div>
+			</div>
+			}
+		</div>
+	</div>
+</div>

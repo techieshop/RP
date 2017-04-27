@@ -1,0 +1,27 @@
+﻿@model RaceAddViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Race.Id)
+
+<div class="container">
+	<div class="row">
+		<br />
+		<p class="lead text-center">
+			@StyleContext.GetTranslation(Dom.Translation.Race.NewRace)
+		</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			@using (Html.BeginForm(Mvc.Controller.Race.Add, Mvc.Controller.Race.Name, FormMethod.Post, new { @class = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				@Html.RPTextBoxFor(m => m.Name)
+				@Html.RPDropDownFor(m => m.RaceTypeId, Model.RaceTypeItems, hasFind:false, isMultiSelect: false)
+				@Html.RPDropDownFor(m => m.OrganizationId, Model.OrganizationItems, isMultiSelect: false, dataId:"race-add-1")
+				@Html.RPDropDownFor(m => m.SeasonId, Model.SeasonItems, isMultiSelect: false, dataId: "race-add-21", dataDepends: "race-add-1", dataUrl:Url.Action(Mvc.Controller.Race.Seasons, Mvc.Controller.Race.Name))
+				@Html.RPDropDownFor(m => m.PointId, Model.PointItems, isMultiSelect: false, dataId: "race-add-22", dataDepends: "race-add-1", dataUrl: Url.Action(Mvc.Controller.Race.Points, Mvc.Controller.Race.Name))
+				<input type="submit" class="btn btn-primary" value="@StyleContext.GetTranslation(Dom.Translation.Common.Save)" />
+				<input type="button" class="btn btn-warning" value="@StyleContext.GetTranslation(Dom.Translation.Common.Cancel)" data-href="@Url.Action(Mvc.Controller.Race.List, Mvc.Controller.Race.Name)" />
+			}
+		</div>
+	</div>
+</div>

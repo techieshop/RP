@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>RP.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a1962112-2795-4ea1-833a-15aac5465b76}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Database</RootNamespace>
+    <AssemblyName>Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Entity" />
+    <Folder Include="Entity\Tables" />
+    <Folder Include="Common" />
+    <Folder Include="Common\Security" />
+    <Folder Include="User" />
+    <Folder Include="User\Tables" />
+    <Folder Include="DomainValue" />
+    <Folder Include="DomainValue\Tables" />
+    <Folder Include="Common\PostDeployment" />
+    <Folder Include="Translation" />
+    <Folder Include="Translation\Tables" />
+    <Folder Include="Organization" />
+    <Folder Include="Organization\Tables" />
+    <Folder Include="Address" />
+    <Folder Include="Translation\StoredProcedures" />
+    <Folder Include="Common\UserDefinedTypes" />
+    <Folder Include="Pigeon" />
+    <Folder Include="Pigeon\Tables" />
+    <Folder Include="Member" />
+    <Folder Include="Member\Tables" />
+    <Folder Include="Address\Tables" />
+    <Folder Include="Translation\Functions" />
+    <Folder Include="Role" />
+    <Folder Include="Role\Tables" />
+    <Folder Include="Season" />
+    <Folder Include="Season\Tables" />
+    <Folder Include="Template" />
+    <Folder Include="Template\Tables" />
+    <Folder Include="Organization\StoredProcedures" />
+    <Folder Include="Member\StoredProcedures" />
+    <Folder Include="Pigeon\StoredProcedures" />
+    <Folder Include="Race" />
+    <Folder Include="Race\Tables" />
+    <Folder Include="User\StoredProcedures" />
+    <Folder Include="Registration" />
+    <Folder Include="Registration\Tables" />
+    <Folder Include="User\StoredProcedures\Auth" />
+    <Folder Include="User\Functions" />
+    <Folder Include="Organization\Views" />
+    <Folder Include="Organization\Functions" />
+    <Folder Include="Role\StoredProcedures" />
+    <Folder Include="Race\StoredProcedures" />
+    <Folder Include="Season\StoredProcedures" />
+    <Folder Include="Point" />
+    <Folder Include="Point\Tables" />
+    <Folder Include="Point\StoredProcedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Entity\Tables\EntityType.sql" />
+    <Build Include="Common\Security\plt.sql" />
+    <Build Include="Entity\Tables\EntityInfo.sql" />
+    <Build Include="Entity\Tables\EntityState.sql" />
+    <Build Include="Entity\Tables\EntityStateTransition.sql" />
+    <Build Include="Entity\Tables\EntityProgress.sql" />
+    <Build Include="User\Tables\User.sql" />
+    <Build Include="Common\Security\dom.sql" />
+    <Build Include="Common\Security\acc.sql" />
+    <Build Include="Translation\Tables\Translation.sql" />
+    <Build Include="Translation\Tables\TranslationCode.sql" />
+    <Build Include="Common\Security\stl.sql" />
+    <Build Include="DomainValue\Tables\Country.sql" />
+    <Build Include="Organization\Tables\Organization.sql" />
+    <Build Include="Translation\StoredProcedures\spGetTranslations.sql" />
+    <Build Include="Common\UserDefinedTypes\KeyList.sql" />
+    <Build Include="Common\Security\udt.sql" />
+    <Build Include="Pigeon\Tables\Pigeon.sql" />
+    <Build Include="Member\Tables\Member.sql" />
+    <Build Include="Address\Tables\Address.sql" />
+    <Build Include="Address\Tables\Website.sql" />
+    <Build Include="Translation\Functions\fnGetTranslations.sql" />
+    <Build Include="User\Tables\UserRole.sql" />
+    <Build Include="Role\Tables\Role.sql" />
+    <Build Include="Season\Tables\Statement.sql" />
+    <Build Include="Common\Security\race.sql" />
+    <None Include="Common\PostDeployment\20.TestData.sql" />
+    <None Include="Common\PostDeployment\12.Template.sql" />
+    <Build Include="Template\Tables\Template.sql" />
+    <Build Include="Entity\Tables\EntityOrganization.sql" />
+    <None Include="Common\PostDeployment\08.EntityOrganization.sql" />
+    <Build Include="Season\Tables\Season.sql" />
+    <Build Include="Organization\StoredProcedures\spGetOrganizationItems.sql" />
+    <Build Include="Organization\StoredProcedures\spInitOrganizationFilter.sql" />
+    <Build Include="Member\StoredProcedures\spInitMemberFilter.sql" />
+    <Build Include="Member\StoredProcedures\spGetMemberItems.sql" />
+    <Build Include="Pigeon\StoredProcedures\spInitPigeonFilter.sql" />
+    <Build Include="Pigeon\StoredProcedures\spGetPigeonItems.sql" />
+    <Build Include="Organization\StoredProcedures\spGetOrganizationDetails.sql" />
+    <Build Include="Member\StoredProcedures\spGetMemberDetails.sql" />
+    <Build Include="Organization\Tables\OrganizationMemberType.sql" />
+    <Build Include="Race\Tables\CommonRace.sql" />
+    <Build Include="Race\Tables\PigeonReturnTime.sql" />
+    <Build Include="Race\Tables\Race.sql" />
+    <Build Include="Race\Tables\RacePigeon.sql" />
+    <Build Include="Race\Tables\RaceResult.sql" />
+    <Build Include="Race\Tables\RaceResultCategory.sql" />
+    <Build Include="Pigeon\StoredProcedures\spGetPigeonDetails.sql" />
+    <Build Include="User\StoredProcedures\spGetUserItems.sql" />
+    <Build Include="User\StoredProcedures\spInitUserFilter.sql" />
+    <Build Include="User\StoredProcedures\spGetUserDetails.sql" />
+    <Build Include="Common\UserDefinedTypes\EntityAccess.sql" />
+    <Build Include="Registration\Tables\Registration.sql" />
+    <Build Include="DomainValue\Tables\DomainValueType.sql" />
+    <Build Include="DomainValue\Tables\DomainValue.sql" />
+    <Build Include="Role\Tables\RoleEntityTypeAccess.sql" />
+    <Build Include="Role\Tables\RoleEntityStateAccess.sql" />
+    <Build Include="Role\Tables\RoleEntityStateTransitionAccess.sql" />
+    <None Include="Common\PostDeployment\04.Account.sql" />
+    <Build Include="Organization\Tables\OrganizationRelation.sql" />
+    <Build Include="User\StoredProcedures\Auth\spGetUserAuth.sql" />
+    <Build Include="Common\UserDefinedTypes\UserRole.sql" />
+    <Build Include="User\Functions\fnGetUserRole.sql" />
+    <Build Include="Translation\StoredProcedures\spGetTranslationCodeGaps.sql" />
+    <Build Include="Organization\Views\vOrganization.sql" />
+    <Build Include="User\Functions\fnGetUserEntityTypeAuth.sql" />
+    <Build Include="Common\UserDefinedTypes\EntityState.sql" />
+    <Build Include="User\Functions\fnGetUserEntityTypeAuthSingle.sql" />
+    <Build Include="Organization\StoredProcedures\spGetOrganizationEntityTypeAccess.sql" />
+    <Build Include="Common\UserDefinedTypes\UserEntityTypeAuth.sql" />
+    <Build Include="Organization\StoredProcedures\spGetOrganizations.sql" />
+    <Build Include="Organization\Functions\fnGetOrganizations.sql" />
+    <Build Include="Organization\Functions\fnGetOrganizationPath.sql" />
+    <Build Include="Pigeon\StoredProcedures\spGetPigeonEntityTypeAccess.sql" />
+    <Build Include="Member\StoredProcedures\spGetMemberEntityTypeAccess.sql" />
+    <Build Include="Member\StoredProcedures\spGetMembers.sql" />
+    <Build Include="User\StoredProcedures\spGetUserEntityTypeAccess.sql" />
+    <Build Include="Role\StoredProcedures\spGetRoleEntityTypeAccess.sql" />
+    <Build Include="Role\StoredProcedures\spGetRoles.sql" />
+    <Build Include="User\StoredProcedures\spGetUsers.sql" />
+    <Build Include="Role\StoredProcedures\spInitRoleFilter.sql" />
+    <Build Include="Role\StoredProcedures\spGetRoleItems.sql" />
+    <Build Include="Role\StoredProcedures\spGetRoleDetails.sql" />
+    <Build Include="Season\StoredProcedures\spInitSeasonFilter.sql" />
+    <Build Include="Season\StoredProcedures\spGetSeasonDetails.sql" />
+    <Build Include="Season\StoredProcedures\spGetSeasonEntityTypeAccess.sql" />
+    <Build Include="Season\StoredProcedures\spGetSeasonItems.sql" />
+    <Build Include="Point\StoredProcedures\spInitPointFilter.sql" />
+    <Build Include="Point\StoredProcedures\spGetPointDetails.sql" />
+    <Build Include="Point\StoredProcedures\spGetPointEntityTypeAccess.sql" />
+    <Build Include="Point\StoredProcedures\spGetPointItems.sql" />
+    <Build Include="Point\Tables\Point.sql" />
+    <Build Include="Race\StoredProcedures\spGetRaceDetails.sql" />
+    <Build Include="Race\StoredProcedures\spGetRaceEntityTypeAccess.sql" />
+    <Build Include="Race\StoredProcedures\spGetRaceItems.sql" />
+    <Build Include="Race\StoredProcedures\spInitRaceFilter.sql" />
+    <Build Include="Point\StoredProcedures\spGetPoints.sql" />
+    <Build Include="User\StoredProcedures\Auth\spGetUserProfile.sql" />
+    <Build Include="Race\StoredProcedures\spGetRaceResultReturnTimes.sql" />
+    <Build Include="Race\StoredProcedures\spGetResultItems.sql" />
+    <Build Include="Race\Tables\RaceDistance.sql" />
+    <Build Include="Race\StoredProcedures\spGetResultDetails.sql" />
+    <Build Include="Season\StoredProcedures\spGetSeasons.sql" />
+    <Build Include="Race\Tables\RaceStatistic.sql" />
+    <Build Include="Race\StoredProcedures\spGetResultTime.sql" />
+    <Build Include="Race\StoredProcedures\spGetResultMaster.sql" />
+    <Build Include="Race\StoredProcedures\spGetResultCommand.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Common\PostDeployment\01.DomainValue.sql" />
+    <None Include="RP.Database.Dev.publish.xml" />
+    <None Include="Common\PostDeployment\02.EntityType.sql" />
+    <None Include="Common\PostDeployment\03.EntityInfo.sql" />
+    <None Include="Common\PostDeployment\05.EntityState.sql" />
+    <None Include="Common\PostDeployment\06.EntityStateTransition.sql" />
+    <None Include="Common\PostDeployment\07.EntityProgress.sql" />
+    <None Include="Common\PostDeployment\10.TranslationCode.sql" />
+    <None Include="Common\PostDeployment\11.Translation.sql" />
+    <None Include="Common\PostDeployment\09.Role.sql" />
+    <Build Include="Organization\Functions\fnGetOrganizationName.sql" />
+    <None Include="RP.Database.smarterasp.net.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+</Project>

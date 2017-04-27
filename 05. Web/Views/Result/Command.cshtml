@@ -1,0 +1,147 @@
+﻿@model ResultCommandItems
+
+@{
+	int counter = 0;
+	int pageNumber = 1;
+	int itemCount = Model.Items.Count;
+}
+
+<html>
+<head>
+	<title>@StyleContext.GetTranslation(Dom.Translation.Result.Command)</title>
+	<style>
+		table {
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+			table tr {
+				width: 70%;
+			}
+
+		.table {
+			border: 1px solid transparent;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+			.table tr {
+				text-align: center;
+			}
+
+			.table td {
+				border: 1px solid #c0c0c0;
+			}
+
+		td.td-empty {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border: 0 none;
+		}
+	</style>
+</head>
+<body>
+	<h3 align="center">@Model.Detail.OrganizationName</h3>
+	<h4 align="center">@StyleContext.GetTranslation(Dom.Translation.Result.TeamStandingsForTheFirstFive)</h4>
+	<table>
+		<tbody>
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Season.Singular)</i></td>
+				<td><b>@Model.Detail.SeasonName</b> </td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Race.StartRaceTime)</i></td>
+				<td><b>@Model.Detail.StartRaceTime.ToShortDateString(CultureManager.DateTimeFormat)</b> </td>
+			</tr>
+
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Point.Singular)</i></td>
+				<td><b>@Model.Detail.PointName (@Model.Detail.Latitude, @Model.Detail.Longitude)</b></td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Pigeon.CountOfPigeons)</i></td>
+				<td><b>@Model.Detail.PigeonCount</b></td>
+			</tr>
+
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Member.CountOfMembers)</i></td>
+				<td><b>@Model.Detail.MemberCount</b></td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.CompetitionTwentyPercent)</i></td>
+				<td><b>@Model.Detail.TwentyPercent</b></td>
+			</tr>
+
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.TimeOfTheFirst)</i></td>
+				<td><b>@Model.Detail.TimeOfFirst.ToShortDateString(CultureManager.DateTimeFormat)</b></td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.AverageDistance)</i></td>
+				<td><b>@Model.Detail.AverageDistance.ToString("N3")</b></td>
+			</tr>
+
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.TimeOfTheLast)</i></td>
+				<td><b>@Model.Detail.TimeOfLast.ToShortDateString(CultureManager.DateTimeFormat)</b></td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Race.StartCompetitionTime)</i></td>
+				<td><b>@Model.Detail.StartСompetitionTime.ToShortDateString(CultureManager.DateTimeFormat)</b></td>
+			</tr>
+
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.TheSpeedOfTheFirst)</i></td>
+				<td><b>@Model.Detail.SpeedOfFirst.ToString("N3")</b></td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Race.EndCompetitionTime)</i></td>
+				<td><b>@Model.Detail.EndСompetitionTime.ToShortDateString(CultureManager.DateTimeFormat)</b></td>
+			</tr>
+
+			<tr>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.TheSpeedOfTheLatter)</i></td>
+				<td><b>@Model.Detail.SpeedOfLast.ToString("N3")</b></td>
+				<td><i>@StyleContext.GetTranslation(Dom.Translation.Result.TheDurationOfTheCompetition)</i></td>
+				<td><b>@Model.Detail.DurationOfCompetitionTimeSpan.ToString(@"hh\:mm\:ss")</b></td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+
+	<table class="table" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Position)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Common.Number)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Member.Initials)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.OrganizationType.Club)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Registration.Singular)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Prize)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Mark)</td>
+				<td>@StyleContext.GetTranslation(Dom.Translation.Result.Summary)</td>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < itemCount; i++)
+			{
+				var item = Model.Items.ToList()[i];
+				counter++;
+				<tr>
+					<td>@item.Position</td>
+					<td>@item.Id</td>
+					<td>@item.Member</td>
+					<td>@item.OrganizationName</td>
+					<td>@item.StatementCount</td>
+					<td>@item.PrizeCount</td>
+					<td>@item.Mark</td>
+					<td>@item.MarkTotal</td>
+				</tr>
+				if ((counter > 37 && pageNumber == 1) || (counter > 51 && pageNumber > 1))
+				{
+					counter = 0;
+					pageNumber++;
+					<tr>
+						<td colspan="8" class="td-empty">
+							@if (i + 1 < itemCount)
+							{
+								<br />
+							}
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model EntityStateChangeViewModel
+
+@{
+	string controller = ViewData[Mvc.ViewData.Controller].ToString();
+}
+
+<div id="entity-state-change-form-id">
+	@if (!Model.EntityTransitions.IsNullOrEmpty())
+	{
+		<div class="pull-left">
+			@using (Ajax.BeginForm(Mvc.Controller.Entity.EntityStateChange, controller, null, new AjaxOptions {HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "entity-state-change-form-id"}, new {@class = "form"})) {
+				var entityTransitionViewModel = new EntityTransitionViewModel {
+					EntityInfoId = Model.EntityInfoId,
+					OrganizationId = Model.OrganizationId
+				};
+				@Html.AntiForgeryToken()
+				@Html.HiddenFor(m => entityTransitionViewModel.EntityInfoId)
+				@Html.HiddenFor(m => entityTransitionViewModel.OrganizationId)
+				foreach (var entityTransition in Model.EntityTransitions) {
+					<button type="submit" name="@Html.NameFor(m => entityTransitionViewModel.EntityTransitionId)" value="@entityTransition.Key" class="btn btn-info">
+						@entityTransition.Value
+					</button>
+				}
+			}
+		</div>
+	}
+</div>

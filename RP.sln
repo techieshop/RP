@@ -1,0 +1,114 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Database", "00. Database", "{F3E447CA-FFF3-4277-B039-03A65A2C6C8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Common", "01. Common", "{09A74B35-5BEB-4D47-945D-2C6E806A31CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Model", "02. Model", "{B8CA5FA7-C599-433D-8158-6A306717B545}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. DAL", "03. DAL", "{1A63D014-4BC3-4209-8161-A612B1554D5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Platform", "04. Platform", "{5A5E099C-70BA-4E7A-BA7E-3E4F5164D161}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. Web", "05. Web", "{72CB646A-BE88-448B-925C-F61A7D345FD5}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RP.Database", "00. Database\RP.Database.sqlproj", "{A1962112-2795-4EA1-833A-15AAC5465B76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RP.Common", "01. Common\RP.Common.csproj", "{9A97C205-1683-4026-A5A5-4E967241EBE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RP.Model", "02. Model\RP.Model.csproj", "{D2378853-914B-4F02-91A1-4ABE924DEB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RP.DAL", "03. DAL\RP.DAL.csproj", "{295E549E-891C-4D51-8088-8BDBCB474760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RP.Platform", "04. Platform\RP.Platform.csproj", "{D2E03D67-6D10-414C-891D-FF2B1995795A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RP.Web", "05. Web\RP.Web.csproj", "{62D48725-ABE4-45E6-AC70-2DFC92B0F1C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1962112-2795-4EA1-833A-15AAC5465B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1962112-2795-4EA1-833A-15AAC5465B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1962112-2795-4EA1-833A-15AAC5465B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1962112-2795-4EA1-833A-15AAC5465B76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1962112-2795-4EA1-833A-15AAC5465B76}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9A97C205-1683-4026-A5A5-4E967241EBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A97C205-1683-4026-A5A5-4E967241EBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A97C205-1683-4026-A5A5-4E967241EBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A97C205-1683-4026-A5A5-4E967241EBE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2378853-914B-4F02-91A1-4ABE924DEB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2378853-914B-4F02-91A1-4ABE924DEB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2378853-914B-4F02-91A1-4ABE924DEB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2378853-914B-4F02-91A1-4ABE924DEB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295E549E-891C-4D51-8088-8BDBCB474760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295E549E-891C-4D51-8088-8BDBCB474760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295E549E-891C-4D51-8088-8BDBCB474760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295E549E-891C-4D51-8088-8BDBCB474760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E03D67-6D10-414C-891D-FF2B1995795A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E03D67-6D10-414C-891D-FF2B1995795A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E03D67-6D10-414C-891D-FF2B1995795A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E03D67-6D10-414C-891D-FF2B1995795A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D48725-ABE4-45E6-AC70-2DFC92B0F1C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D48725-ABE4-45E6-AC70-2DFC92B0F1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D48725-ABE4-45E6-AC70-2DFC92B0F1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D48725-ABE4-45E6-AC70-2DFC92B0F1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1962112-2795-4EA1-833A-15AAC5465B76} = {F3E447CA-FFF3-4277-B039-03A65A2C6C8D}
+		{9A97C205-1683-4026-A5A5-4E967241EBE2} = {09A74B35-5BEB-4D47-945D-2C6E806A31CC}
+		{D2378853-914B-4F02-91A1-4ABE924DEB09} = {B8CA5FA7-C599-433D-8158-6A306717B545}
+		{295E549E-891C-4D51-8088-8BDBCB474760} = {1A63D014-4BC3-4209-8161-A612B1554D5A}
+		{D2E03D67-6D10-414C-891D-FF2B1995795A} = {5A5E099C-70BA-4E7A-BA7E-3E4F5164D161}
+		{62D48725-ABE4-45E6-AC70-2DFC92B0F1C5} = {72CB646A-BE88-448B-925C-F61A7D345FD5}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://slobodyan.visualstudio.com/
+		SccProjectUniqueName0 = 00.\u0020Database\\RP.Database.sqlproj
+		SccProjectTopLevelParentUniqueName0 = RP.sln
+		SccProjectName0 = 00.\u0020Database
+		SccAuxPath0 = https://slobodyan.visualstudio.com
+		SccLocalPath0 = 00.\u0020Database
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = 01.\u0020Common\\RP.Common.csproj
+		SccProjectTopLevelParentUniqueName1 = RP.sln
+		SccProjectName1 = 01.\u0020Common
+		SccAuxPath1 = https://slobodyan.visualstudio.com
+		SccLocalPath1 = 01.\u0020Common
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = 02.\u0020Model\\RP.Model.csproj
+		SccProjectTopLevelParentUniqueName2 = RP.sln
+		SccProjectName2 = 02.\u0020Model
+		SccAuxPath2 = https://slobodyan.visualstudio.com
+		SccLocalPath2 = 02.\u0020Model
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = 03.\u0020DAL\\RP.DAL.csproj
+		SccProjectTopLevelParentUniqueName3 = RP.sln
+		SccProjectName3 = 03.\u0020DAL
+		SccAuxPath3 = https://slobodyan.visualstudio.com
+		SccLocalPath3 = 03.\u0020DAL
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = 04.\u0020Platform\\RP.Platform.csproj
+		SccProjectTopLevelParentUniqueName4 = RP.sln
+		SccProjectName4 = 04.\u0020Platform
+		SccAuxPath4 = https://slobodyan.visualstudio.com
+		SccLocalPath4 = 04.\u0020Platform
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = 05.\u0020Web\\RP.Web.csproj
+		SccProjectTopLevelParentUniqueName5 = RP.sln
+		SccProjectName5 = 05.\u0020Web
+		SccAuxPath5 = https://slobodyan.visualstudio.com
+		SccLocalPath5 = 05.\u0020Web
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

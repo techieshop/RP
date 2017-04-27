@@ -1,0 +1,76 @@
+﻿@model ICollection<ResultItemViewModel>
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Result.Id)
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			@if (Model.Any())
+			{
+				<ul class="treeview">
+					@foreach (var level1 in Model)
+					{
+						string url1 = "";
+						if (level1.RaceId != null)
+						{
+							url1 = Url.Action(Mvc.Controller.Result.Details, Mvc.Controller.Result.Name, new { id = level1.RaceId.Value });
+						}
+						<li>
+							<a href="@url1">@level1.Name</a>
+							<ul>
+								@foreach (var level2 in level1.Items)
+								{
+									string url2 = "";
+									if (level2.RaceId != null)
+									{
+										url2 = Url.Action(Mvc.Controller.Result.Details, Mvc.Controller.Result.Name, new { id = level2.RaceId.Value });
+									}
+									<li>
+										<a href="@url2">@level2.Name</a>
+										<ul>
+											@foreach (var level3 in level2.Items)
+											{
+												string url3 = "";
+												if (level3.RaceId != null)
+												{
+													url3 = Url.Action(Mvc.Controller.Result.Details, Mvc.Controller.Result.Name, new { id = level3.RaceId.Value });
+												}
+												<li>
+													<a href="@url3">@level3.Name</a>
+													<ul>
+														@foreach (var level4 in level3.Items)
+														{
+															string url4 = "#";
+															if (level4.RaceId != null)
+															{
+																url4 = Url.Action(Mvc.Controller.Result.Details, Mvc.Controller.Result.Name, new { id = level4.RaceId.Value });
+																<li>
+																	<a href="@url4" target="blank">@level4.Name</a>
+																	@*Розкоментувати щоб продовжити вкладеність*@
+																	@*<ul></ul>*@
+																</li>
+															}
+														}
+													</ul>
+												</li>
+											}
+										</ul>
+									</li>
+								}
+							</ul>
+						</li>
+					}
+				</ul>
+			}
+			else
+			{
+				<p class="text-justify">
+					@StyleContext.GetTranslation(Dom.Translation.Result.WhileThereAreNoResults)
+				</p>
+			}
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+		</div>
+	</div>
+</div>

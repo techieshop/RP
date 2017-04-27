@@ -1,0 +1,21 @@
+﻿@model RoleItemsViewModel
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Name)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Description)</th>
+			<th>@StyleContext.GetTranslation(Dom.Translation.Common.Status)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+		<tr data-href="@Url.Action(Mvc.Controller.Role.Details, Mvc.Controller.Role.Name, new { id = item.Id })">
+			<td>@item.Name</td>
+			<td>@item.Description</td>
+			<td>@StyleContext.GetTranslation(item.EntityStateNameCode)</td>
+		</tr>
+		}
+	</tbody>
+</table>

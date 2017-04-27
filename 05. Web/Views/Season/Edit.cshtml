@@ -1,0 +1,21 @@
+﻿@model SeasonDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Season.Id)
+
+<div class="container">
+	<div class="row">
+		<br />
+		<div class="col-md-8 col-md-offset-2">
+			@using (Html.BeginForm(Mvc.Controller.Season.Edit, Mvc.Controller.Season.Name, FormMethod.Post, new { @class = "form" }))
+			{
+			@Html.AntiForgeryToken()
+				@Html.HiddenFor(m => m.Detail.Id)
+				@Html.RPDropDownFor(m => m.Detail.SeasonTypeId, Model.Detail.SeasonTypeItems, hasFind: false, isMultiSelect: false)
+				@Html.RPTextBoxFor(m => m.Detail.Year)
+				@Html.RPTabsWithDragFor(m => m.StatementIds, Model.StatementItems)
+				<input type="submit" class="btn btn-primary" value="@StyleContext.GetTranslation(Dom.Translation.Common.Save)" />
+				<input type="button" class="btn btn-warning" value="@StyleContext.GetTranslation(Dom.Translation.Common.Cancel)" data-href="@Url.Action(Mvc.Controller.Season.Details, Mvc.Controller.Season.Name, new { id = Model.Detail.Id })" />
+			}
+		</div>
+	</div>
+</div>

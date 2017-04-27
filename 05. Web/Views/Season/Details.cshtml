@@ -1,0 +1,59 @@
+﻿@model SeasonDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Season.Id)
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="@Url.Action(Mvc.Controller.Season.List, Mvc.Controller.Season.Name)">
+						<i class="glyphicon glyphicon-arrow-left"></i>
+						@StyleContext.GetTranslation(Dom.Translation.Season.BackToSeasonList)
+					</a>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center">
+					<i class="img-circle avatar avatar-original glyphicon glyphicon-list-alt blue gi-5x"></i>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="only-bottom-margin">@Model.Detail.Year</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Status):</span> @StyleContext.GetTranslation(Model.Detail.EntityStateNameCode)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Season.SeasonType):</span> @Model.Detail.SeasonTypeName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Organization.Singular):</span> @Model.Detail.OrganizationName<br>
+							<br>
+						</div>
+						<div class="col-md-4">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.MembersPigeons):</span> @Model.Detail.MemberCount\@Model.Detail.PigeonCount
+						</div>
+					</div>
+				</div>
+			</div>
+
+			@if (UserContext.HasAccess(Dom.EntityType.Season.Id, Dom.AccessType.ReadWrite))
+			{
+				<div class="row">
+					<div class="col-md-12">
+						<hr>
+						@if (Model.Detail.HasEntityStateChangeAccess)
+						{
+							@Html.Partial(Mvc.View.Entity.EntityStateChange, Model.Detail.EntityStateChange)
+						}
+						<button class="btn btn-default pull-right" data-href="@Url.Action(Mvc.Controller.Season.Edit, Mvc.Controller.Season.Name, new {id = Model.Detail.Id})">
+							<i class="glyphicon glyphicon-pencil"></i> @StyleContext.GetTranslation(Dom.Translation.Common.Edit)
+						</button>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>

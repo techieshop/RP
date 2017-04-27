@@ -1,0 +1,28 @@
+﻿@model ICollection<Registration>
+
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>@StyleContext.GetTranslation(Dom.Translation.Common.FilingDate)</th>
+		<th>@StyleContext.GetTranslation(Dom.Translation.Organization.Singular)</th>
+		<th>@StyleContext.GetTranslation(Dom.Translation.Registration.CandidateInfo)</th>
+		<th>@StyleContext.GetTranslation(Dom.Translation.Registration.HeadInfo)</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var item in Model)
+	{
+		string className = item.IsRead ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked";
+		<tr>
+			<td>@item.DateTimeRequest</td>
+			<td>@item.OrganizationName</td>
+			<td>@item.CandidateInfo</td>
+			<td>@item.HeadInfo</td>
+			<td><i class="@className" data-href="@Url.Action(Mvc.Controller.Registration.ChangeIsRead, Mvc.Controller.Registration.Name, new { id = item.Id })"></i></td>
+			<td><i class="glyphicon glyphicon-trash" data-href="@Url.Action(Mvc.Controller.Registration.Delete, Mvc.Controller.Registration.Name, new { id = item.Id })"></i></td>
+		</tr>
+	}
+	</tbody>
+</table>

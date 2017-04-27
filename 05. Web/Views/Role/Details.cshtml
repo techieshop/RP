@@ -1,0 +1,59 @@
+﻿@model RoleDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Role.Id)
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="@Url.Action(Mvc.Controller.Role.List, Mvc.Controller.Role.Name)">
+						<i class="glyphicon glyphicon-arrow-left"></i>
+						@StyleContext.GetTranslation(Dom.Translation.Role.BackToRoleList)
+					</a>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center">
+					<i class="img-circle avatar avatar-original glyphicon glyphicon-flash blue gi-5x"></i>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="only-bottom-margin">@Model.Detail.Name</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Status):</span> @StyleContext.GetTranslation(Model.Detail.EntityStateNameCode)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Description):</span> 
+							<p class="text-justify">
+								@Html.Raw(Model.Detail.Description)
+							</p>
+							<br>
+						</div>
+						<div class="col-md-4">
+						</div>
+					</div>
+				</div>
+			</div>
+			@if (UserContext.HasAccess(Dom.EntityType.Role.Id, Dom.AccessType.ReadWrite))
+			{
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+					@if (Model.Detail.HasEntityStateChangeAccess)
+					{
+						@Html.Partial(Mvc.View.Entity.EntityStateChange, Model.Detail.EntityStateChange)
+					}
+					<button class="btn btn-default pull-right" data-href="@Url.Action(Mvc.Controller.Role.Edit, Mvc.Controller.Role.Name, new {id = Model.Detail.Id})">
+						<i class="glyphicon glyphicon-pencil"></i> @StyleContext.GetTranslation(Dom.Translation.Common.Edit)
+					</button>
+				</div>
+			</div>
+			}
+		</div>
+	</div>
+</div>

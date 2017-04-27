@@ -1,0 +1,62 @@
+﻿@model TabsWithDateTimeViewModel
+
+<div class="form-group">
+	<label class="control-label">
+		@Model.LabelMessage
+		@if (Model.IsRequired && Model.ShowValidationMessage)
+		{
+			<span class="required">*</span>
+		}
+	</label>
+	@Model.Input
+	<div class="clearfix">
+		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 bhoechie-tab-menu">
+			<div class="list-group">
+				@foreach (var item in Model.Items)
+				{
+					<a href="#" class="list-group-item text-center">
+						@item.Key
+					</a>
+				}
+			</div>
+		</div>
+		<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 bhoechie-tab">
+			@foreach (var values in Model.Items)
+			{
+				<div class="bhoechie-tab-content">
+					<input placeholder="@StyleContext.GetTranslation(Dom.Translation.Race.EnterPigeonRingForQuickSearch)" class="form-control ul-search" type="text" />
+					<ul class="list-unstyled">
+						@foreach (var item in values.Value)
+						{
+							string ischecked = "";
+							string isNone = "none";
+							if (item.Selected)
+							{
+								ischecked = "checked";
+								isNone = "";
+							}
+							<li class="form-inline">
+								<input type="hidden" value="@item.Value"/>
+								<label>@item.Text</label>
+								<span class="switch">
+									<input type="checkbox" @ischecked/>
+									<span class="slider round"></span>
+								</span>
+								<span class="input-group" style="display: @isNone;">
+									<input placeholder="@StyleContext.GetTranslation(Dom.Translation.Common.DateTimeFormat)" class="form-control datetimepicker" type="text" value="@item.DateTime"/>
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</span>
+							</li>
+						}
+					</ul>
+				</div>
+			}
+		</div>
+	</div>
+	@if (Model.ShowValidationMessage)
+	{
+		<div class="validation-section">@Model.ValidationMessage</div>
+	}
+</div>

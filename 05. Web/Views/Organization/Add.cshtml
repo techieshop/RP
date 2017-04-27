@@ -1,0 +1,25 @@
+﻿@model OrganizationAddViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Organization.Id)
+
+<div class="container">
+	<div class="row">
+		<br/>
+		<p class="lead text-center">
+			@StyleContext.GetTranslation(Dom.Translation.Organization.NewOrganization)
+		</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			@using (Html.BeginForm(Mvc.Controller.Organization.Add, Mvc.Controller.Organization.Name, FormMethod.Post, new { @class = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				@Html.RPTextBoxFor(m => m.Name)
+				@Html.RPDropDownFor(m => m.OrganizationTypeId, Model.OrganizationTypeItems, hasFind: false, isMultiSelect: false, dataId: "organization-add-1")
+				@Html.RPDropDownFor(m => m.OrganizationId, Model.OrganizationItems, isMultiSelect: false, dataId: "organization-add-21", dataDepends: "organization-add-1", dataUrl: Url.Action(Mvc.Controller.Organization.Organizations, Mvc.Controller.Organization.Name))
+				<input type="submit" class="btn btn-primary" value="@StyleContext.GetTranslation(Dom.Translation.Common.Save)" />
+				<input type="button" class="btn btn-warning" value="@StyleContext.GetTranslation(Dom.Translation.Common.Cancel)" data-href="@Url.Action(Mvc.Controller.Organization.List, Mvc.Controller.Organization.Name)" />
+			}
+		</div>
+	</div>
+</div>

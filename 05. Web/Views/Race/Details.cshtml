@@ -1,0 +1,95 @@
+﻿@model RaceDetailsViewModel
+
+@Html.Partial(Mvc.View.Setting.ListItems, Dom.EntityType.Race.Id)
+
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="@Url.Action(Mvc.Controller.Race.List, Mvc.Controller.Race.Name)">
+						<i class="glyphicon glyphicon-arrow-left"></i>
+						@StyleContext.GetTranslation(Dom.Translation.Race.BackToRaceList)
+					</a>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center">
+					<i class="img-circle avatar avatar-original glyphicon glyphicon-plane blue gi-5x"></i>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="only-bottom-margin">@Model.Detail.Name</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.RaceType):</span> @Model.Detail.RaceTypeName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Organization.Singular):</span> @Model.Detail.OrganizationName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Season.Singular):</span> @Model.Detail.SeasonName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Point.Singular):</span> @Model.Detail.PointName<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Common.Status):</span> @StyleContext.GetTranslation(Model.Detail.EntityStateNameCode)<br>
+							<br>
+						</div>
+						<div class="col-md-4">
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.MembersPigeons):</span> @Model.Detail.MemberCount\@Model.Detail.PigeonCount<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.StartRaceTime):</span> @Model.Detail.StartRaceTime.ToShortDateString(CultureManager.DateTimeFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.StartCompetitionTime):</span> @Model.Detail.StartСompetitionTime.ToShortDateString(CultureManager.DateTimeFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.EndCompetitionTime):</span> @Model.Detail.EndСompetitionTime.ToShortDateString(CultureManager.DateTimeFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.DarknessBeginTime):</span> @Model.Detail.DarknessBeginTime.ToShortDateString(CultureManager.DateTimeFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.DarknessEndTime):</span> @Model.Detail.DarknessEndTime.ToShortDateString(CultureManager.DateTimeFormat)<br>
+							<span class="text-muted">@StyleContext.GetTranslation(Dom.Translation.Race.Weather):</span> @Model.Detail.Weather<br>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			@if (Model.Address != null)
+			{
+				@Html.Partial(Mvc.View.UI.GoogleMap, Model.Address)
+			}
+
+			@if (UserContext.HasAccess(Dom.EntityType.Race.Id, Dom.AccessType.ReadWrite))
+			{
+				<div class="row">
+					<div class="col-md-12">
+						<hr>
+						@if (Model.Detail.HasEntityStateChangeAccess)
+						{
+							@Html.Partial(Mvc.View.Entity.EntityStateChange, Model.Detail.EntityStateChange)
+						}
+						<span class="pull-right">
+							@if (Model.Detail.EntityStateId == Dom.EntityType.Race.State.Open)
+							{
+								<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Race.Edit, Mvc.Controller.Race.Name, new {id = Model.Detail.Id})">
+									<i class="glyphicon glyphicon-pencil"></i> 1. @StyleContext.GetTranslation(Dom.Translation.Common.Edit)
+								</button>
+								<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Race.ReturnTime, Mvc.Controller.Race.Name, new {id = Model.Detail.Id})">
+									<i class="glyphicon glyphicon-time"></i> 2. @StyleContext.GetTranslation(Dom.Translation.Race.AddPigeonReturnTime)
+								</button>
+								<button class="btn btn-default" data-href="@Url.Action(Mvc.Controller.Race.CalculateDistances, Mvc.Controller.Race.Name, new {id = Model.Detail.Id})">
+									<i class="glyphicon glyphicon-move"></i> 3. @StyleContext.GetTranslation(Dom.Translation.Race.CalculateDistances)
+								</button>
+							}
+							@if (Model.CanCalculateResults)
+							{
+								<button class="btn btn-primary" data-href="@Url.Action(Mvc.Controller.Race.CalculateResult, Mvc.Controller.Race.Name, new {id = Model.Detail.Id})">
+									<i class="glyphicon glyphicon-dashboard"></i> 4. @StyleContext.GetTranslation(Dom.Translation.Race.CalculateResult)
+								</button>
+							}
+							@if (Model.Detail.HasResults)
+							{
+								<button class="btn btn-success" data-href="@Url.Action(Mvc.Controller.Result.Details, Mvc.Controller.Result.Name, new {id = Model.Detail.Id})">
+									<i class="glyphicon glyphicon-dashboard"></i> @StyleContext.GetTranslation(Dom.Translation.Result.Singular)
+								</button>
+							}
+						</span>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>
